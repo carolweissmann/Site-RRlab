@@ -1,0 +1,140 @@
+   /* 16. FOOTER
+================================================================ */
+
+.footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--border);
+  padding-block: 3.5rem 2.5rem;
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+/* Logo */
+.footer__logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: auto;
+}
+.footer__logo img {
+  height: 100px;
+  width: auto;
+}
+.footer__tagline {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 280px;
+}
+
+/* Colunas */
+.footer__col h4 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.footer__col a {
+  font-size: 0.86rem;
+  color: var(--text-body);
+  transition: color var(--t);
+}
+.footer__col a:hover { color: var(--text-white); }
+
+/* Bottom bar */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer__copy {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Ícones sociais */
+.footer__socials { display: flex; gap: 0.75rem; }
+.footer__social {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--t), background var(--t);
+}
+.footer__social:hover {
+  border-color: var(--border-hov);
+  background: var(--brand-blue-light);
+}
+.footer__social svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--text-body);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke var(--t);
+}
+.footer__social:hover svg { stroke: var(--brand-blue); }
+
+
+/* ================================================================
+   17. MOBILE NAV OVERLAY
+================================================================ */
+
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-base);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.25rem;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid var(--border);
+}
+.mobile-nav.open { transform: translateX(0); }
+
+.mobile-nav a {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-body);
+  transition: color var(--t);
+}
+.mobile-nav a:hover { color: var(--brand-blue); }
+
+.mobile-nav__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-body);
+  transition: color var(--t);
+}
+.mobile-nav__close:hover { color: var(--text-white); }
+
+

@@ -1,0 +1,14 @@
+/*
+   RRlab — folha de estilos principal
+   Os estilos estão separados por área para facilitar a manutenção.
+*/
+
+@import url('css/base.css');
+@import url('css/navigation.css');
+@import url('css/hero.css');
+@import url('css/about-and-audience.css');
+@import url('css/services-and-process.css');
+@import url('css/differentials.css');
+@import url('css/call-to-action.css');
+@import url('css/footer-and-mobile-menu.css');
+@import url('css/animations-and-responsive.css');

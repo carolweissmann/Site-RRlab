@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!--
+  ================================================================
+  RRlab — Restless Research Lab  |  index.html  |  v3
+  Fonte:  Axiforma (via Bunny CDN) + Manrope (fallback Google)
+  Cores:  #1e6882 (azul) · #9f766a (terracota) · #e5e3e2 (cinza)
+  Refs:   anyolabs.com — dark, minimalista, partículas no fundo
+  ================================================================
+-->
+
+<head>
+
+  <!-- ─── META ──────────────────────────────────────────────── -->
+  <meta charset="UTF-8" />
+  <meta name="viewport"    content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="O RRlab transforma complexidade científica em caminhos claros. Consultoria em pesquisa clínica, compliance, treinamentos e concierge em saúde." />
+  <meta name="robots"      content="index, follow" />
+  <link rel="canonical"    href="https://rrlab.com.br/" />
+
+  <!-- ─── OPEN GRAPH ────────────────────────────────────────── -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://rrlab.com.br/" />
+  <meta property="og:title"       content="RRlab — Restless Research Lab" />
+  <meta property="og:description" content="Ciência aplicada com rigor, clareza e resultado." />
+  <meta property="og:image"       content="https://rrlab.com.br/assets/og-image.jpg" />
+  <meta name="twitter:card"       content="summary_large_image" />
+
+  <!-- ─── TÍTULO ────────────────────────────────────────────── -->
+  <title>RRlab — Restless Research Lab | Consultoria Científica</title>
+
+  <!-- ─── FONTES ────────────────────────────────────────────── -->
+  <!--
+    Axiforma é fonte comercial. Inclua o arquivo via @font-face
+    se tiver a licença, ou substitua pelo CDN da Typekit/Fontshare.
+    Fallback: Manrope (Google Fonts, muito similar em espírito).
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!--
+    Se você tiver a Axiforma, adicione aqui:
+    <style>
+      @font-face {
+        font-family: 'Axiforma';
+        src: url('assets/fonts/Axiforma-Regular.woff2') format('woff2');
+        font-weight: 400; font-style: normal; font-display: swap;
+      }
+      @font-face {
+        font-family: 'Axiforma';
+        src: url('assets/fonts/Axiforma-Bold.woff2') format('woff2');
+        font-weight: 700; font-style: normal; font-display: swap;
+      }
+    </style>
+  -->
+
+  <!-- ─── STYLESHEET ────────────────────────────────────────── -->
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+  <!-- ============================================================
+       CANVAS — partículas biomédicas (gerenciado por main.js)
+       ============================================================ -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+
+  <!-- ============================================================
+       MOBILE NAV OVERLAY
+       ============================================================ -->
+  <div
+    class="mobile-nav"
+    id="mobileNav"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu de navegação"
+  >
+    <!-- Botão fechar -->
+    <button class="mobile-nav__close" id="mobileNavClose" aria-label="Fechar menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="5" y1="5" x2="19" y2="19"/>
+        <line x1="19" y1="5" x2="5" y2="19"/>
+      </svg>
+    </button>
+
+    <!-- Links -->
+    <a href="#quem-somos">Quem somos</a>
+    <a href="#para-quem">Para quem</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#diferenciais">Diferenciais</a>
+    <a href="#contato" class="btn btn-primary btn-lg">Agendar conversa</a>
+  </div>
+
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <nav class="nav" id="mainNav" role="navigation" aria-label="Navegação principal">
+    <div class="container">
+      <div class="nav__inner">
+
+        <!-- Logo -->
+        <a href="#" class="nav__logo" aria-label="RRlab — ir para o início">
+          <img
+            src="logo-white.png"
+            alt="RRlab — Restless Research Lab"
+            width="140"
+            height="40"
+          />
+        </a>
+
+        <!-- Links centrais (desktop) -->
+        <div class="nav__links" role="list">
+          <a href="#quem-somos"    role="listitem">Quem somos</a>
+          <a href="#para-quem"     role="listitem">Para quem</a>
+          <a href="#servicos"      role="listitem">Serviços</a>
+          <a href="#como-funciona" role="listitem">Como funciona</a>
+          <a href="#diferenciais"  role="listitem">Diferenciais</a>
+        </div>
+
+        <!-- CTA direita (desktop) -->
+        <a href="#contato" class="btn nav__cta" aria-label="Agendar conversa com especialista">
+          Agendar conversa
+          <span class="nav__cta-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5"/>
+            </svg>
+          </span>
+        </a>
+
+        <!-- Hamburger (mobile) -->
+        <button
+          class="nav__hamburger"
+          id="navHamburger"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       SECTION 1 — HERO
+       ============================================================ -->
+  <section class="hero" aria-label="Apresentação do RRlab">
+    <div class="container">
+      <div class="hero__content">
+
+        <!-- Eyebrow pill -->
+        <div class="hero__eyebrow reveal">
+          <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+          Consultoria Científica de Alto Padrão
+        </div>
+
+        <!-- Título H1 — único na página -->
+        <h1 class="display hero__title reveal d1">
+          Ciência que resolve o que importa.
+        </h1>
+
+        <!-- Subtítulo -->
+        <p class="hero__sub reveal d2">
+          O RRlab transforma a complexidade científica em caminhos claros —
+          para pesquisadores, instituições e pacientes que não se contentam
+          com respostas superficiais.
+        </p>
+
+        <!-- Botões de ação -->
+        <div class="hero__actions reveal d3">
+          <a href="#servicos" class="btn btn-primary btn-lg">
+            Conheça os serviços
+          </a>
+        </div>
+
+        <!-- Números de confiança -->
+        <div class="hero__trust reveal d4" aria-label="Nossos números">
+          <div class="hero__trust-item">
+            <span class="hero__trust-num">15+</span>
+            <span class="hero__trust-label">anos de experiência</span>
+          </div>
+          <div class="hero__trust-sep" aria-hidden="true"></div>
+          <div class="hero__trust-item">
+            <span class="hero__trust-num">300+</span>
+            <span class="hero__trust-label">estudos clínicos</span>
+          </div>
+          <div class="hero__trust-sep" aria-hidden="true"></div>
+          <div class="hero__trust-item">
+            <span class="hero__trust-num">6</span>
+            <span class="hero__trust-label">áreas de serviço</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Seta de scroll -->
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 2 — QUEM SOMOS
+       ============================================================ -->
+  <section class="section" id="quem-somos" aria-labelledby="about-h2">
+    <div class="container">
+      <div class="about__grid">
+
+        <!-- Texto esquerdo -->
+        <div>
+          <div class="section-header reveal">
+            <p class="label">Quem somos</p>
+            <h2 id="about-h2" class="h2">
+              Nascemos da prática.<br>Crescemos pela ciência.
+            </h2>
+            <p>
+              O RRlab — Restless Research Lab — surgiu da experiência de quem viveu
+              a pesquisa clínica por dentro: não como observador, mas como protagonista.
+              Conhecemos cada protocolo, cada regulamentação e cada detalhe que faz
+              a diferença entre um estudo bem conduzido e um que simplesmente não funciona.
+            </p>
+          </div>
+
+          <!-- Pills de área de atuação -->
+          <div class="about__pills reveal d2" aria-label="Áreas de atuação">
+            <span class="pill">Pesquisa clínica</span>
+            <span class="pill">Gestão de estudos</span>
+            <span class="pill">Compliance regulatório</span>
+            <span class="pill">Treinamento especializado</span>
+            <span class="pill">Desenvolvimento científico</span>
+          </div>
+        </div>
+
+        <!-- Card de visão -->
+        <div class="about__card reveal d2">
+          <span class="about__card-tag">Nossa visão</span>
+          <h3 class="h3">
+            Ciência é muito mais do que artigos e protocolos.
+          </h3>
+          <p>
+            É uma ferramenta viva de transformação. É o que move hospitais,
+            orienta médicos e, no fim, muda a vida de pacientes. No RRlab,
+            acreditamos que rigor científico e clareza estratégica devem caminhar
+            juntos — e é exatamente isso que entregamos.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 3 — PARA QUEM TRABALHAMOS
+       ============================================================ -->
+  <section class="section" id="para-quem" aria-labelledby="audience-h2">
+    <div class="container">
+
+      <!-- Cabeçalho de seção -->
+      <div class="section-header centered reveal">
+        <p class="label">Para quem</p>
+        <h2 id="audience-h2" class="h2">
+          Trabalhamos com quem<br>leva a ciência a sério.
+        </h2>
+        <p>
+          Do pesquisador ao paciente — cada um com sua linguagem,
+          cada um com suas necessidades.
+        </p>
+      </div>
+
+      <!-- Grid de públicos -->
+      <div class="audience__grid">
+
+        <article class="a-card reveal d1">
+          <div class="a-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="18"/>
+              <rect x="14" y="8" width="7" height="13"/>
+              <line x1="3" y1="21" x2="21" y2="21"/>
+            </svg>
+          </div>
+          <h3 class="h3">Centros de Pesquisa</h3>
+          <p>
+            Suporte estratégico e operacional para centros que buscam excelência
+            na condução de estudos clínicos.
+          </p>
+        </article>
+
+        <article class="a-card reveal d2">
+          <div class="a-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="4" y="4" width="16" height="16" rx="2"/>
+              <line x1="12" y1="8" x2="12" y2="16"/>
+              <line x1="8"  y1="12" x2="16" y2="12"/>
+            </svg>
+          </div>
+          <h3 class="h3">Instituições de Saúde</h3>
+          <p>
+            Hospitais e clínicas que desejam estruturar ou aprimorar atividades
+            de pesquisa e conformidade regulatória.
+          </p>
+        </article>
+
+        <article class="a-card reveal d3">
+          <div class="a-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+          </div>
+          <h3 class="h3">Profissionais da Saúde</h3>
+          <p>
+            Médicos, enfermeiros e especialistas que precisam de orientação
+            científica e treinamentos de alto nível.
+          </p>
+        </article>
+
+        <article class="a-card reveal d1">
+          <div class="a-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M5.4 5.4a9 9 0 1 0 13.2 0"/>
+              <line x1="12" y1="2" x2="12" y2="6"/>
+            </svg>
+          </div>
+          <h3 class="h3">Pesquisadores</h3>
+          <p>
+            Cientistas e investigadores que buscam mentoria, consultoria estratégica
+            e suporte para publicações científicas.
+          </p>
+        </article>
+
+        <article class="a-card reveal d2">
+          <div class="a-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+              <path d="M6 12.5V17a6 6 0 0 0 12 0v-4.5"/>
+            </svg>
+          </div>
+          <h3 class="h3">Estudantes</h3>
+          <p>
+            Futuros pesquisadores e profissionais que querem iniciar sua jornada
+            científica com bases sólidas e orientação qualificada.
+          </p>
+        </article>
+
+        <article class="a-card reveal d3">
+          <div class="a-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3 class="h3">Pacientes e Famílias</h3>
+          <p>
+            Orientação clara e humanizada para quem busca compreender diagnósticos
+            e acessar estudos clínicos com segurança.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 4 — NOSSOS SERVIÇOS
+       ============================================================ -->
+  <section class="section" id="servicos" aria-labelledby="services-h2">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="label">Nossos serviços</p>
+        <h2 id="services-h2" class="h2">
+          Soluções sob medida para<br>cada desafio científico.
+        </h2>
+        <p>
+          Combinamos rigor técnico com visão estratégica para entregar
+          resultados concretos em cada projeto.
+        </p>
+      </div>
+
+      <div class="services__grid">
+
+        <!-- Serviço 1 -->
+        <article class="svc-card reveal d1">
+          <div class="svc-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
+            </svg>
+          </div>
+          <h3 class="h3">Consultoria para Centros de Pesquisa</h3>
+          <p>
+            Diagnóstico, estruturação e otimização operacional de centros de
+            pesquisa clínica. Do planejamento à execução, com excelência regulatória.
+          </p>
+          <span class="svc-card__link" aria-hidden="true">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </article>
+
+        <!-- Serviço 2 -->
+        <article class="svc-card reveal d2">
+          <div class="svc-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="h3">Qualidade e Compliance</h3>
+          <p>
+            Gestão de conformidade regulatória, auditorias internas e implementação
+            de sistemas de qualidade em pesquisa clínica e farmacêutica.
+          </p>
+          <span class="svc-card__link" aria-hidden="true">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </article>
+
+        <!-- Serviço 3 -->
+        <article class="svc-card reveal d3">
+          <div class="svc-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3 class="h3">Treinamentos</h3>
+          <p>
+            Capacitação especializada para equipes de pesquisa, profissionais
+            de saúde e estudantes — presencial ou online, com metodologia prática.
+          </p>
+          <span class="svc-card__link" aria-hidden="true">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </article>
+
+        <!-- Serviço 4 -->
+        <article class="svc-card reveal d1">
+          <div class="svc-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="h3">Consultoria Acadêmica</h3>
+          <p>
+            Suporte a projetos de pesquisa, revisão de protocolos, submissão
+            a periódicos e desenvolvimento de carreira científica.
+          </p>
+          <span class="svc-card__link" aria-hidden="true">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </article>
+
+        <!-- Serviço 5 -->
+        <article class="svc-card reveal d2">
+          <div class="svc-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3 class="h3">Concierge em Saúde</h3>
+          <p>
+            Serviço personalizado de orientação e navegação no sistema de saúde —
+            com atenção, cuidado e precisão científica em cada etapa.
+          </p>
+          <span class="svc-card__link" aria-hidden="true">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </article>
+
+        <!-- Serviço 6 -->
+        <article class="svc-card reveal d3">
+          <div class="svc-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="8"  y1="11" x2="14" y2="11"/>
+              <line x1="11" y1="8"  x2="11" y2="14"/>
+            </svg>
+          </div>
+          <h3 class="h3">Acesso a Estudos Clínicos</h3>
+          <p>
+            Conexão de pacientes e profissionais com estudos clínicos relevantes —
+            com suporte informado, ético e humanizado.
+          </p>
+          <span class="svc-card__link" aria-hidden="true">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 5 — COMO FUNCIONA
+       ============================================================ -->
+  <section class="section" id="como-funciona" aria-labelledby="how-h2">
+    <div class="container">
+
+      <div class="section-header centered reveal">
+        <p class="label">Processo</p>
+        <h2 id="how-h2" class="h2">Como trabalhamos.</h2>
+        <p>Um método estruturado, do diagnóstico ao resultado mensurável.</p>
+      </div>
+
+      <div class="how__track">
+
+        <div class="how__step reveal d1">
+          <div class="how__num" aria-label="Etapa 1 de 4">1</div>
+          <h3 class="h3">Diagnóstico</h3>
+          <p>
+            Entendemos seu contexto, objetivos e os desafios específicos
+            que precisam ser resolvidos.
+          </p>
+        </div>
+
+        <div class="how__step reveal d2">
+          <div class="how__num" aria-label="Etapa 2 de 4">2</div>
+          <h3 class="h3">Planejamento</h3>
+          <p>
+            Construímos uma estratégia personalizada com metas claras,
+            indicadores e prazos realistas.
+          </p>
+        </div>
+
+        <div class="how__step reveal d3">
+          <div class="how__num" aria-label="Etapa 3 de 4">3</div>
+          <h3 class="h3">Execução</h3>
+          <p>
+            Implementamos as soluções com rigor técnico, transparência
+            e acompanhamento próximo em cada etapa.
+          </p>
+        </div>
+
+        <div class="how__step reveal d4">
+          <div class="how__num" aria-label="Etapa 4 de 4">4</div>
+          <h3 class="h3">Acompanhamento</h3>
+          <p>
+            Monitoramos resultados, ajustamos o curso e garantimos que
+            cada entrega cumpra o que foi prometido.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 6 — DIFERENCIAIS
+       ============================================================ -->
+  <section class="section" id="diferenciais" aria-labelledby="diffs-h2">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="label">Diferenciais</p>
+        <h2 id="diffs-h2" class="h2">
+          Por que o RRlab<br>é diferente.
+        </h2>
+        <p>
+          Cada projeto carrega o peso de mais de uma década de experiência real,
+          não teórica.
+        </p>
+      </div>
+
+      <div class="diffs__grid">
+
+        <div class="diff-card reveal d1">
+          <!-- data-counter anima o número ao entrar na viewport -->
+          <div class="diff-card__num" data-counter="15" data-suffix="+">15+</div>
+          <h3 class="h3">Anos de experiência</h3>
+          <p>
+            Mais de quinze anos atuando em pesquisa clínica, indústria
+            farmacêutica e academia.
+          </p>
+        </div>
+
+        <div class="diff-card reveal d2">
+          <div class="diff-card__num" data-counter="300" data-suffix="+">300+</div>
+          <h3 class="h3">Estudos clínicos</h3>
+          <p>
+            Envolvimento direto em mais de trezentos estudos — da fase I
+            à submissão regulatória.
+          </p>
+        </div>
+
+        <div class="diff-card reveal d3">
+          <div class="diff-card__num" aria-hidden="true">↗</div>
+          <h3 class="h3">Experiência clínica real</h3>
+          <p>
+            Nossa equipe veio da prática. Conhecemos cada protocolo,
+            cada documento e cada comitê de ética.
+          </p>
+        </div>
+
+        <div class="diff-card reveal d1">
+          <div class="diff-card__num" aria-hidden="true">Φ</div>
+          <h3 class="h3">Indústria farmacêutica</h3>
+          <p>
+            Profundo entendimento das exigências de sponsors globais
+            e das principais agências reguladoras.
+          </p>
+        </div>
+
+        <div class="diff-card reveal d2">
+          <div class="diff-card__num" aria-hidden="true">∑</div>
+          <h3 class="h3">Experiência acadêmica</h3>
+          <p>
+            Formação sólida e produção científica que sustentam cada
+            recomendação que fazemos.
+          </p>
+        </div>
+
+        <div class="diff-card reveal d3">
+          <div class="diff-card__num" aria-hidden="true">◎</div>
+          <h3 class="h3">Abordagem personalizada</h3>
+          <p>
+            Sem soluções genéricas. Cada cliente recebe atenção dedicada,
+            do primeiro contato à entrega final.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 7 — POR QUE O RRLAB
+       ============================================================ -->
+  <section class="section" id="por-que" aria-labelledby="why-h2">
+    <div class="container">
+      <div class="why__inner reveal">
+
+        <!-- Painel esquerdo: argumento -->
+        <div class="why__left">
+          <p class="label">Nossa proposta</p>
+          <h2 id="why-h2" class="h2">
+            A ciência pode ser<br>complexa. Nós não somos.
+          </h2>
+          <p>
+            Traduzimos o vocabulário técnico em decisões claras, caminhos viáveis
+            e resultados mensuráveis — para que você não precise escolher entre
+            rigor científico e agilidade estratégica.
+          </p>
+
+          <ul class="why__list" aria-label="Nossos compromissos">
+            <li class="why__item">
+              <div class="why__check" aria-hidden="true">
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor">
+                  <path d="M2 7l3.5 3.5L12 3"/>
+                </svg>
+              </div>
+              <p>Clareza em cada etapa do processo científico</p>
+            </li>
+            <li class="why__item">
+              <div class="why__check" aria-hidden="true">
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor">
+                  <path d="M2 7l3.5 3.5L12 3"/>
+                </svg>
+              </div>
+              <p>Credibilidade construída em anos de experiência real</p>
+            </li>
+            <li class="why__item">
+              <div class="why__check" aria-hidden="true">
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor">
+                  <path d="M2 7l3.5 3.5L12 3"/>
+                </svg>
+              </div>
+              <p>Presença humanizada em cada conversa e cada entrega</p>
+            </li>
+            <li class="why__item">
+              <div class="why__check" aria-hidden="true">
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor">
+                  <path d="M2 7l3.5 3.5L12 3"/>
+                </svg>
+              </div>
+              <p>Resultados concretos — não apenas relatórios</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Painel direito: estatísticas -->
+        <div class="why__right">
+          <div class="why__stats" aria-label="Números do RRlab">
+
+            <div class="why__stat">
+              <div class="why__stat-num">15<sup>+</sup></div>
+              <div class="why__stat-label">anos em pesquisa clínica</div>
+            </div>
+
+            <div class="why__stat">
+              <div class="why__stat-num">300<sup>+</sup></div>
+              <div class="why__stat-label">estudos acompanhados</div>
+            </div>
+
+            <div class="why__stat">
+              <div class="why__stat-num">6</div>
+              <div class="why__stat-label">áreas de serviço especializadas</div>
+            </div>
+
+            <div class="why__stat">
+              <div class="why__stat-num">100<sup>%</sup></div>
+              <div class="why__stat-label">foco em resultado por cliente</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 8 — CTA
+       ============================================================ -->
+  <section class="section" id="contato" aria-labelledby="cta-h2">
+    <div class="container">
+      <div class="cta-sec__box reveal">
+
+        <p class="label">Próximo passo</p>
+
+        <h2 id="cta-h2" class="h2">
+          Prontos para resolver<br>seu desafio científico.
+        </h2>
+
+        <p>
+          Uma conversa de 30 minutos pode clarear meses de incerteza.
+          Fale com um especialista do RRlab e descubra como podemos ajudar.
+        </p>
+
+        <a href="mailto:contato@rrlab.com.br" class="btn btn-primary btn-lg">
+          Quero conversar com um especialista
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
+               stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__inner">
+
+        <!-- Coluna da marca -->
+        <div>
+          <div class="footer__logo" aria-label="RRlab">
+            <img
+              src="logo-white.png"
+              alt="RRlab — Restless Research Lab"
+              width="120"
+              height="36"
+            />
+          </div>
+          <p class="footer__tagline">
+            Restless Research Lab — consultoria científica de alto padrão.
+            Pesquisa clínica, compliance, treinamentos e concierge em saúde.
+          </p>
+        </div>
+
+        <!-- Coluna de serviços -->
+        <div class="footer__col">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos">Centros de Pesquisa</a></li>
+            <li><a href="#servicos">Qualidade e Compliance</a></li>
+            <li><a href="#servicos">Treinamentos</a></li>
+            <li><a href="#servicos">Consultoria Acadêmica</a></li>
+            <li><a href="#servicos">Concierge em Saúde</a></li>
+            <li><a href="#servicos">Acesso a Estudos</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna de contato -->
+        <div class="footer__col">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="mailto:contato@rrlab.com.br">contato@rrlab.com.br</a></li>
+            <li><a href="#quem-somos">Sobre o RRlab</a></li>
+            <li><a href="#como-funciona">Como trabalhamos</a></li>
+            <li><a href="#contato">Agendar conversa</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Barra inferior -->
+      <div class="footer__bottom">
+        <p class="footer__copy">
+          © 2025 RRlab — Restless Research Lab. Todos os direitos reservados.
+        </p>
+
+        <!-- Ícones sociais -->
+        <div class="footer__socials">
+
+          <span class="footer__social" role="img" aria-label="LinkedIn do RRlab — em breve">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </span>
+
+          <span class="footer__social" role="img" aria-label="Instagram do RRlab — em breve">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </span>
+
+          <a
+            href="mailto:contato@rrlab.com.br"
+            class="footer__social"
+            aria-label="E-mail do RRlab"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT (no final do body = melhor performance)
+       ============================================================ -->
+  <script src="main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+   /* 15. CTA (Section 8)
+================================================================ */
+
+.cta-sec__box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+  position: relative;
+  overflow: hidden;
+}
+/* Glow superior */
+.cta-sec__box::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 350px;
+  background: radial-gradient(ellipse, var(--brand-blue-light), transparent 70%);
+  pointer-events: none;
+}
+.cta-sec__box .label { margin-bottom: 1rem; }
+.cta-sec__box .h2   { margin-bottom: 1.25rem; }
+.cta-sec__box > p {
+  font-size: 1.05rem;
+  line-height: 1.78;
+  margin-bottom: 2.5rem;
+}
+
+

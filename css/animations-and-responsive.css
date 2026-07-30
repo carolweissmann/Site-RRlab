@@ -1,0 +1,111 @@
+   /* 18. ANIMAÇÕES DE ENTRADA (Reveal)
+================================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays escalonados */
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.18s; }
+.d3 { transition-delay: 0.28s; }
+.d4 { transition-delay: 0.38s; }
+.d5 { transition-delay: 0.48s; }
+
+
+/* ================================================================
+   19. RESPONSIVO
+================================================================ */
+
+/* A navegação simplifica antes do conteúdo, pois seus cinco links ocupam
+   mais espaço horizontal do que os grids da página. */
+@media (max-width: 1100px) {
+  .nav__links, .nav__cta { display: none; }
+  .nav__hamburger { display: flex; }
+}
+
+/* Tablets e notebooks compactos */
+@media (max-width: 900px) {
+  .container { padding-inline: clamp(1.25rem, 4vw, 2rem); }
+
+  .hero__trust-sep { display: none; }
+  .hero__trust { gap: 1.5rem; }
+
+  /* Os grids de três colunas passam para duas; o "Quem somos" mantém
+     duas colunas para aproveitar melhor tablets em paisagem. */
+  .about__grid { gap: clamp(2.5rem, 6vw, 4rem); }
+  .audience__grid { grid-template-columns: repeat(2, 1fr); }
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .diffs__grid    { grid-template-columns: repeat(2, 1fr); }
+
+  .how__track { grid-template-columns: repeat(2, 1fr); }
+  .how__track::before { display: none; }
+
+  .why__inner { grid-template-columns: 1fr; }
+  .why__left  { border-right: none; border-bottom: 1px solid var(--border); }
+
+  .footer__inner { grid-template-columns: 1fr 1fr; }
+}
+
+/* Tablets em retrato e celulares grandes */
+@media (max-width: 700px) {
+  .section { padding-block: clamp(4rem, 12vw, 5.5rem); }
+  .about__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about__card { padding: clamp(1.75rem, 6vw, 2.5rem); }
+  .why__left, .why__right { padding: clamp(2rem, 7vw, 3rem); }
+}
+
+@media (max-width: 640px) {
+  .nav { top: 6px; }
+  .nav .container { padding-inline: 1rem; }
+  .nav__inner { height: 48px; }
+  .nav__logo img { height: 24px; }
+
+  .hero { min-height: auto; padding-top: 76px; }
+  .hero__content { padding-block: 3.5rem 5rem; }
+  .hero__eyebrow { font-size: 0.62rem; letter-spacing: 0.11em; }
+  .hero__sub { font-size: 1rem; line-height: 1.7; margin-bottom: 2.25rem; }
+  .hero__actions { margin-bottom: 3rem; }
+  .hero__trust { gap: 1.25rem; padding-top: 2rem; }
+  .hero__trust-num { font-size: 1.4rem; }
+  .hero__trust-label { font-size: 0.68rem; }
+  .hero__scroll { display: none; }
+
+  .audience__grid { grid-template-columns: 1fr; }
+  .services__grid { grid-template-columns: 1fr; }
+  .diffs__grid    { grid-template-columns: 1fr; }
+  .how__track     { grid-template-columns: 1fr; }
+  .why__stats     { grid-template-columns: 1fr 1fr; }
+  .footer__inner  { grid-template-columns: 1fr; }
+  .footer__bottom { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .display { font-size: clamp(2.45rem, 12vw, 3.25rem); }
+  .hero__eyebrow { max-width: 100%; text-align: left; }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { justify-content: center; }
+  .hero__trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .hero__trust-label { line-height: 1.35; }
+  .about__pills { gap: 0.45rem; }
+  .pill { padding: 0.4rem 0.75rem; font-size: 0.74rem; }
+  .why__stats { grid-template-columns: 1fr; }
+}
+
+/* ================================================================
+   20. REDUÇÃO DE MOVIMENTO (acessibilidade)
+================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero__scroll,
+  .hero__eyebrow-dot { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
