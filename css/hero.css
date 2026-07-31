@@ -1,5 +1,18 @@
-   /* 8. HERO
+ /* ================================================================
+   8. HERO
 ================================================================ */
+
+
+/* ── Canvas da molécula 3D ────────────────────────────────────── */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
 
 
 .hero {
@@ -88,7 +101,6 @@
 .hero__title em {
   font-style: normal;
   color: var(--brand-blue);
-  /* Sem gradiente — usa a cor sólida da marca */
 }
 
 /* Subtítulo */
@@ -167,5 +179,3 @@
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%       { transform: translateX(-50%) translateY(8px); }
 }
-
-

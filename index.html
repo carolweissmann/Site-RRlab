@@ -78,23 +78,33 @@
     role="dialog"
     aria-modal="true"
     aria-label="Menu de navegação"
+    aria-hidden="true"
+    inert
   >
-    <!-- Botão fechar -->
-    <button class="mobile-nav__close" id="mobileNavClose" aria-label="Fechar menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <line x1="5" y1="5" x2="19" y2="19"/>
-        <line x1="19" y1="5" x2="5" y2="19"/>
-      </svg>
-    </button>
+    <div class="mobile-nav__panel">
+      <div class="mobile-nav__header">
+        <a href="#" class="mobile-nav__logo" aria-label="RRlab — ir para o início">
+          <img src="logo-white.png" alt="RRlab — Restless Research Lab" width="140" height="40" />
+        </a>
 
-    <!-- Links -->
-    <a href="#quem-somos">Quem somos</a>
-    <a href="#para-quem">Para quem</a>
-    <a href="#servicos">Serviços</a>
-    <a href="#como-funciona">Como funciona</a>
-    <a href="#diferenciais">Diferenciais</a>
-    <a href="#contato" class="btn btn-primary btn-lg">Agendar conversa</a>
+        <button class="mobile-nav__close" id="mobileNavClose" aria-label="Fechar menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="5" y1="5" x2="19" y2="19"/>
+            <line x1="19" y1="5" x2="5" y2="19"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="mobile-nav__links">
+        <a href="#quem-somos">Quem somos</a>
+        <a href="#para-quem">Para quem</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#contato" class="btn btn-primary">Agendar conversa</a>
+      </div>
+    </div>
   </div>
 
 

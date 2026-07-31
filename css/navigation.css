@@ -110,12 +110,16 @@
 /* Hamburger */
 .nav__hamburger {
   display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 5px;
+  padding: 0;
 }
 .nav__hamburger span {
   display: block;
@@ -182,5 +186,4 @@
   padding: 1rem 2.25rem;
   font-size: 0.96rem;
 }
-
 
