@@ -1,19 +1,112 @@
 /* ================================================================
    RRlab — Restless Research Lab
-   main.js — v4
+   main.js — v5
 
    SUMÁRIO
-   1.  Navbar — estado de scroll
-   2.  Mobile Nav
-   3.  Scroll Reveal (IntersectionObserver)
-   4.  Hero — disparo imediato de reveals
-   5.  Smooth Scroll com offset do nav
-   6.  Counters animados
+   1.  Hero — campo de partículas (canvas 2D, estático)
+   2.  Navbar — estado de scroll
+   3.  Mobile Nav
+   4.  Scroll Reveal (IntersectionObserver)
+   5.  Hero — disparo imediato de reveals
+   6.  Smooth Scroll com offset do nav
+   7.  Counters animados
 ================================================================ */
 
 
 /* ================================================================
-   1. NAVBAR — estado de scroll
+   1. HERO — CAMPO DE PARTÍCULAS
+   Canvas 2D nativo, sem lib externa. Posições geradas uma única vez
+   (não há loop de animação); só a camada inteira se desloca num
+   parallax sutil ao mover o mouse.
+================================================================ */
+
+(function initHeroParticles() {
+
+  const hero   = document.querySelector('.hero');
+  const canvas = document.getElementById('hero-particles');
+  if (!hero || !canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Paleta da marca — azul predominante, terracota como acento raro */
+  function pickColor() {
+    const r = Math.random();
+    if (r < 0.15) return '159, 118, 106';  /* terracota */
+    if (r < 0.55) return '91, 184, 212';   /* azul claro */
+    return '30, 104, 130';                 /* azul marca */
+  }
+
+  let particles = [];
+
+  function render() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = hero.clientWidth;
+    const h = hero.clientHeight;
+
+    canvas.width  = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width  = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const cx = w / 2;
+    const cy = h / 2;
+    const maxDist = Math.hypot(cx, cy);
+
+    /* Densidade proporcional à área, com teto pra não pesar em telas grandes */
+    const count = Math.max(40, Math.min(140, Math.round((w * h) / 9000)));
+
+    particles = Array.from({ length: count }, () => {
+      const x = Math.random() * w;
+      const y = Math.random() * h;
+      /* 0 no centro, 1 na borda — usado pra dar mais brilho/tamanho ao centro */
+      const dist  = Math.hypot(x - cx, y - cy) / maxDist;
+      const boost = Math.max(1 - dist * 0.75, 0.35);
+      return {
+        x, y,
+        radius: (0.6 + Math.random() * 1.2) * boost,
+        alpha:  (0.15 + Math.random() * 0.4) * Math.max(boost, 0.4),
+        color:  pickColor(),
+      };
+    });
+
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
+      ctx.fill();
+    });
+  }
+
+  render();
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(render, 200);
+  }, { passive: true });
+
+  /* Parallax sutil no mouse — só desloca a camada via CSS, não redesenha */
+  if (!prefersReducedMotion) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const nx = (e.clientX - rect.left) / rect.width  - 0.5;
+      const ny = (e.clientY - rect.top)  / rect.height - 0.5;
+      canvas.style.transform = `translate(${nx * -10}px, ${ny * -10}px)`;
+    }, { passive: true });
+
+    hero.addEventListener('mouseleave', () => {
+      canvas.style.transform = 'translate(0, 0)';
+    });
+  }
+
+})();
+
+
+/* ================================================================
+   2. NAVBAR — estado de scroll
 ================================================================ */
 
 const mainNav = document.getElementById('mainNav');
@@ -24,7 +117,7 @@ window.addEventListener('scroll', () => {
 
 
 /* ================================================================
-   2. MOBILE NAV
+   3. MOBILE NAV
 ================================================================ */
 
 const mobileNav   = document.getElementById('mobileNav');
@@ -103,7 +196,7 @@ window.addEventListener('resize', () => {
 
 
 /* ================================================================
-   3. SCROLL REVEAL (IntersectionObserver)
+   4. SCROLL REVEAL (IntersectionObserver)
 ================================================================ */
 
 const revealEls = document.querySelectorAll('.reveal');
@@ -124,7 +217,7 @@ revealEls.forEach(el => revealObserver.observe(el));
 
 
 /* ================================================================
-   4. HERO — disparo imediato (above the fold)
+   5. HERO — disparo imediato (above the fold)
 ================================================================ */
 
 document.querySelectorAll('.hero .reveal').forEach((el, i) => {
@@ -133,7 +226,7 @@ document.querySelectorAll('.hero .reveal').forEach((el, i) => {
 
 
 /* ================================================================
-   5. SMOOTH SCROLL com offset do nav
+   6. SMOOTH SCROLL com offset do nav
 ================================================================ */
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -151,7 +244,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 
 /* ================================================================
-   6. COUNTERS ANIMADOS
+   7. COUNTERS ANIMADOS
    Uso: <span data-counter="300" data-suffix="+">300+</span>
 ================================================================ */
 

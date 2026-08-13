@@ -15,41 +15,37 @@
   background: var(--bg-base);
 }
 
-/* Aurora — blob azul, canto superior-esquerdo */
+/* Glow central único — núcleo terracota que esmaece para azul,
+   mais denso/brilhante no meio, como base pro campo de partículas */
 .hero::before {
   content: '';
   position: absolute;
-  top: -20%;
-  left: -15%;
-  width: 65%;
-  height: 65%;
-  background: radial-gradient(circle, var(--brand-blue-glow) 0%, transparent 70%);
-  filter: blur(120px);
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  background:
+    radial-gradient(circle, var(--brand-terra-glow) 0%, transparent 40%),
+    radial-gradient(circle, var(--brand-blue-glow) 10%, transparent 65%);
+  filter: blur(110px);
   pointer-events: none;
-  animation: aurora-drift-a 32s ease-in-out infinite;
+  animation: aurora-drift 36s ease-in-out infinite;
 }
 
-/* Aurora — blob terracota, canto inferior-direito */
-.hero::after {
-  content: '';
+@keyframes aurora-drift {
+  0%, 100%  { transform: translate(-50%, -50%) scale(1); }
+  50%        { transform: translate(-50%, -50%) translate(2%, 1.5%) scale(1.05); }
+}
+
+/* Campo de partículas — canvas 2D nativo, posições geradas uma vez,
+   sem loop de animação. Só a camada inteira se move (parallax do mouse). */
+#hero-particles {
   position: absolute;
-  bottom: -25%;
-  right: -15%;
-  width: 60%;
-  height: 60%;
-  background: radial-gradient(circle, var(--brand-terra-glow) 0%, transparent 70%);
-  filter: blur(120px);
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  animation: aurora-drift-b 38s ease-in-out infinite;
-}
-
-@keyframes aurora-drift-a {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(4%, 3%); }
-}
-@keyframes aurora-drift-b {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(-4%, -3%); }
+  transition: transform 0.4s ease-out;
 }
 
 .hero__content {

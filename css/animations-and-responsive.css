@@ -134,7 +134,7 @@
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero__scroll,
   .hero__eyebrow-dot,
-  .hero::before,
-  .hero::after { animation: none; }
+  .hero::before { animation: none; }
+  #hero-particles { transition: none; }
   * { transition-duration: 0.01ms !important; }
 }
