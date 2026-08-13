@@ -2,19 +2,6 @@
    8. HERO
 ================================================================ */
 
-
-/* ── Canvas da molécula 3D ────────────────────────────────────── */
-#particles-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  display: block;
-}
-
-
 .hero {
   min-height: 100svh;
   display: flex;
@@ -25,33 +12,44 @@
   z-index: 2;
   overflow: hidden;
   text-align: center;
+  background: var(--bg-base);
 }
 
-/* Grade muito sutil no fundo da hero */
+/* Aurora — blob azul, canto superior-esquerdo */
 .hero::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
-  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
+  top: -20%;
+  left: -15%;
+  width: 65%;
+  height: 65%;
+  background: radial-gradient(circle, var(--brand-blue-glow) 0%, transparent 70%);
+  filter: blur(120px);
   pointer-events: none;
+  animation: aurora-drift-a 32s ease-in-out infinite;
 }
 
-/* Glow central */
+/* Aurora — blob terracota, canto inferior-direito */
 .hero::after {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 900px;
-  height: 600px;
-  background: radial-gradient(ellipse, var(--brand-blue-light) 0%, transparent 65%);
+  bottom: -25%;
+  right: -15%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, var(--brand-terra-glow) 0%, transparent 70%);
+  filter: blur(120px);
   pointer-events: none;
+  animation: aurora-drift-b 38s ease-in-out infinite;
+}
+
+@keyframes aurora-drift-a {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(4%, 3%); }
+}
+@keyframes aurora-drift-b {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-4%, -3%); }
 }
 
 .hero__content {

@@ -10,6 +10,8 @@
 
 .diff-card {
   background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   padding: 2rem 1.75rem;
@@ -21,7 +23,7 @@
   transform: translateY(-3px);
 }
 
-/* Número / símbolo de destaque */
+/* Número de destaque (cards com contador animado) */
 .diff-card__num {
   font-size: 2.5rem;
   font-weight: 800;
@@ -29,6 +31,28 @@
   line-height: 1;
   margin-bottom: 0.65rem;
   color: var(--brand-blue);
+}
+
+/* Ícone de destaque — mesmo padrão visual de .svc-card__icon / .a-card__icon */
+.diff-card__icon {
+  width: 48px;
+  height: 48px;
+  background: var(--brand-blue-light);
+  border: 1px solid rgba(30,104,130,0.28);
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.diff-card__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--brand-blue);
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .diff-card .h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }

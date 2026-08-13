@@ -45,8 +45,10 @@
   .services__grid { grid-template-columns: repeat(2, 1fr); }
   .diffs__grid    { grid-template-columns: repeat(2, 1fr); }
 
-  .how__track { grid-template-columns: repeat(2, 1fr); }
-  .how__track::before { display: none; }
+  .how__track { grid-template-columns: repeat(2, 1fr); row-gap: 3rem; }
+  /* Em 2 colunas, só a etapa do meio da fileira (2ª) teria um conector
+     "fantasma" pulando pra fileira de baixo — some só esse. */
+  .how__step:nth-child(2)::after { display: none; }
 
   .why__inner { grid-template-columns: 1fr; }
   .why__left  { border-right: none; border-bottom: 1px solid var(--border); }
@@ -81,10 +83,35 @@
   .audience__grid { grid-template-columns: 1fr; }
   .services__grid { grid-template-columns: 1fr; }
   .diffs__grid    { grid-template-columns: 1fr; }
-  .how__track     { grid-template-columns: 1fr; }
   .why__stats     { grid-template-columns: 1fr 1fr; }
   .footer__inner  { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; text-align: center; }
+
+  /* Timeline vira uma coluna única com um conector vertical contínuo,
+     em vez de simplesmente esconder a linha. */
+  .how__track {
+    grid-template-columns: 1fr;
+    row-gap: 2.25rem;
+  }
+  .how__step {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.25rem;
+    padding-inline: 0;
+  }
+  .how__step::after { display: none; }
+  .how__num { margin-bottom: 0; }
+  .how__track::before {
+    content: '';
+    position: absolute;
+    top: 29px;
+    bottom: 29px;
+    left: 29px;
+    width: 1px;
+    background: linear-gradient(180deg, var(--brand-blue), rgba(30,104,130,0.10));
+    z-index: 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -106,6 +133,8 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero__scroll,
-  .hero__eyebrow-dot { animation: none; }
+  .hero__eyebrow-dot,
+  .hero::before,
+  .hero::after { animation: none; }
   * { transition-duration: 0.01ms !important; }
 }

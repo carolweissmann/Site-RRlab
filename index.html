@@ -3,10 +3,10 @@
 
 <!--
   ================================================================
-  RRlab — Restless Research Lab  |  index.html  |  v3
+  RRlab — Restless Research Lab  |  index.html  |  v4
   Fonte:  Axiforma (via Bunny CDN) + Manrope (fallback Google)
   Cores:  #1e6882 (azul) · #9f766a (terracota) · #e5e3e2 (cinza)
-  Refs:   anyolabs.com — dark, minimalista, partículas no fundo
+  Refs:   anyolabs.com — dark, minimalista, aurora desfocada no fundo
   ================================================================
 -->
 
@@ -62,12 +62,6 @@
 </head>
 
 <body>
-
-  <!-- ============================================================
-       CANVAS — partículas biomédicas (gerenciado por main.js)
-       ============================================================ -->
-  <canvas id="particles-canvas" aria-hidden="true"></canvas>
-
 
   <!-- ============================================================
        MOBILE NAV OVERLAY
@@ -269,6 +263,59 @@
         </div>
 
       </div>
+
+      <!-- Time — quem está por trás do RRlab -->
+      <div class="team reveal d3">
+        <p class="label">Quem faz acontecer</p>
+        <h3 class="h3 team__title">Por trás do RRlab.</h3>
+
+        <div class="team__grid">
+
+          <article class="team-card">
+            <div class="team-card__avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+              </svg>
+            </div>
+            <h4 class="team-card__name">[PLACEHOLDER — Nome da fundadora]</h4>
+            <p class="team-card__role">[PLACEHOLDER — Cargo/Papel]</p>
+            <p class="team-card__bio">
+              [PLACEHOLDER — breve bio de 1-2 linhas sobre trajetória e atuação.]
+            </p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+              </svg>
+            </div>
+            <h4 class="team-card__name">[PLACEHOLDER — Nome]</h4>
+            <p class="team-card__role">[PLACEHOLDER — Cargo/Papel]</p>
+            <p class="team-card__bio">
+              [PLACEHOLDER — breve bio de 1-2 linhas sobre trajetória e atuação.]
+            </p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+              </svg>
+            </div>
+            <h4 class="team-card__name">[PLACEHOLDER — Nome]</h4>
+            <p class="team-card__role">[PLACEHOLDER — Cargo/Papel]</p>
+            <p class="team-card__bio">
+              [PLACEHOLDER — breve bio de 1-2 linhas sobre trajetória e atuação.]
+            </p>
+          </article>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -630,7 +677,11 @@
         </div>
 
         <div class="diff-card reveal d3">
-          <div class="diff-card__num" aria-hidden="true">↗</div>
+          <div class="diff-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 12h-4l-3 8-4-16-3 8H2"/>
+            </svg>
+          </div>
           <h3 class="h3">Experiência clínica real</h3>
           <p>
             Nossa equipe veio da prática. Conhecemos cada protocolo,
@@ -639,7 +690,12 @@
         </div>
 
         <div class="diff-card reveal d1">
-          <div class="diff-card__num" aria-hidden="true">Φ</div>
+          <div class="diff-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="8" y="3" width="8" height="18" rx="4" transform="rotate(45 12 12)"/>
+              <line x1="6" y1="12" x2="18" y2="12" transform="rotate(45 12 12)"/>
+            </svg>
+          </div>
           <h3 class="h3">Indústria farmacêutica</h3>
           <p>
             Profundo entendimento das exigências de sponsors globais
@@ -648,7 +704,12 @@
         </div>
 
         <div class="diff-card reveal d2">
-          <div class="diff-card__num" aria-hidden="true">∑</div>
+          <div class="diff-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+              <path d="M6 12.5V17a6 6 0 0 0 12 0v-4.5"/>
+            </svg>
+          </div>
           <h3 class="h3">Experiência acadêmica</h3>
           <p>
             Formação sólida e produção científica que sustentam cada
@@ -657,7 +718,13 @@
         </div>
 
         <div class="diff-card reveal d3">
-          <div class="diff-card__num" aria-hidden="true">◎</div>
+          <div class="diff-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="8.5"/>
+              <circle cx="12" cy="12" r="4.5"/>
+              <circle cx="12" cy="12" r="1"/>
+            </svg>
+          </div>
           <h3 class="h3">Abordagem personalizada</h3>
           <p>
             Sem soluções genéricas. Cada cliente recebe atenção dedicada,
