@@ -3,6 +3,7 @@
    main.js — v5
 
    SUMÁRIO
+   0.  Fundo animado — iridescence (WebGL)
    1.  Hero — campo de partículas (canvas 2D, estático)
    2.  Navbar — estado de scroll
    3.  Mobile Nav
@@ -11,6 +12,26 @@
    6.  Smooth Scroll com offset do nav
    7.  Counters animados
 ================================================================ */
+
+
+/* ================================================================
+   0. FUNDO ANIMADO — IRIDESCENCE (WebGL)
+   Camada fixa atrás de todo o conteúdo. Engine em js/iridescence.js.
+================================================================ */
+
+(function initIridescenceBackground() {
+
+  const bg = document.getElementById('iridescence-bg');
+  if (!bg || typeof createIridescence !== 'function') return;
+
+  createIridescence(bg, {
+    color: [0.1176, 0.4078, 0.5098],
+    speed: 1.0,
+    amplitude: 0.1,
+    mouseReact: false,
+  });
+
+})();
 
 
 /* ================================================================

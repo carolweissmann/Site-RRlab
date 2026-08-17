@@ -63,11 +63,26 @@ html {
 
 body {
   font-family: 'Manrope', 'Axiforma', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-base);
+  background: transparent;
   color: var(--text-body);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* ================================================================
+   FUNDO ANIMADO (WebGL — iridescence)
+   Fixo atrás de todo o conteúdo; ver js/iridescence.js
+================================================================ */
+#iridescence-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--bg-base);
+}
+#iridescence-bg canvas {
+  display: block;
 }
 
 a    { color: inherit; text-decoration: none; }

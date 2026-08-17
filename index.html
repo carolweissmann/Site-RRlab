@@ -64,6 +64,12 @@
 <body>
 
   <!-- ============================================================
+       FUNDO ANIMADO (WebGL — iridescence)
+       Fixo, cobre a tela inteira, atrás de todo o resto do conteúdo.
+       ============================================================ -->
+  <div id="iridescence-bg" aria-hidden="true"></div>
+
+  <!-- ============================================================
        MOBILE NAV OVERLAY
        ============================================================ -->
   <div
@@ -952,6 +958,7 @@
   <!-- ============================================================
        JAVASCRIPT (no final do body = melhor performance)
        ============================================================ -->
+  <script src="js/iridescence.js"></script>
   <script src="main.js"></script>
 
 </body>

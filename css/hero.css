@@ -12,7 +12,7 @@
   z-index: 2;
   overflow: hidden;
   text-align: center;
-  background: var(--bg-base);
+  background: transparent;
 }
 
 /* Glow central único — núcleo terracota que esmaece para azul,
