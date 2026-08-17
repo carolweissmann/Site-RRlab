@@ -149,12 +149,8 @@
   min-height: 44px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex: 0 0 auto;
-}
-.mobile-nav__logo img {
-  width: auto;
-  height: 22px;
 }
 
 .mobile-nav__links {
