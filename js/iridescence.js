@@ -126,7 +126,9 @@ function createIridescence(container, options = {}) {
   const mouse = { x: 0.5, y: 0.5 };
 
   function resize() {
-    const scale = window.devicePixelRatio || 1;
+    const rawScale = window.devicePixelRatio || 1;
+    /* Em telas pequenas, limita o DPR pra reduzir carga de renderização. */
+    const scale = window.innerWidth < 768 ? Math.min(rawScale, 1.5) : rawScale;
     const width = container.offsetWidth;
     const height = container.offsetHeight;
     canvas.width = width * scale;
@@ -148,11 +150,12 @@ function createIridescence(container, options = {}) {
     container.addEventListener('mousemove', handleMouseMove);
   }
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   let animationId;
   const start = performance.now();
 
-  function render(now) {
-    animationId = requestAnimationFrame(render);
+  function drawFrame(now) {
     const time = (now - start) * 0.001;
 
     gl.useProgram(program);
@@ -164,7 +167,18 @@ function createIridescence(container, options = {}) {
 
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
-  animationId = requestAnimationFrame(render);
+
+  function render(now) {
+    animationId = requestAnimationFrame(render);
+    drawFrame(now);
+  }
+
+  /* Movimento reduzido: desenha um único frame estático, sem loop. */
+  if (prefersReducedMotion) {
+    drawFrame(performance.now());
+  } else {
+    animationId = requestAnimationFrame(render);
+  }
 
   return {
     setColor(rgb) { state.color = rgb; },

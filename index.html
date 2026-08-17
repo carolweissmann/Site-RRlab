@@ -24,7 +24,8 @@
   <meta property="og:url"         content="https://rrlab.com.br/" />
   <meta property="og:title"       content="RRlab — Restless Research Lab" />
   <meta property="og:description" content="Ciência aplicada com rigor, clareza e resultado." />
-  <meta property="og:image"       content="https://rrlab.com.br/assets/og-image.jpg" />
+  <!-- TODO: descomentar quando assets/og-image.jpg (1200x630px) existir -->
+  <!-- <meta property="og:image"       content="https://rrlab.com.br/assets/og-image.jpg" /> -->
   <meta name="twitter:card"       content="summary_large_image" />
 
   <!-- ─── TÍTULO ────────────────────────────────────────────── -->
@@ -224,6 +225,13 @@
 
 
   <!-- ============================================================
+       CONTENT VEIL
+       Escurece o fundo animado a partir daqui até o fim da página
+       (o hero, acima, fica de fora). Ver #content-veil em base.css.
+       ============================================================ -->
+  <div id="content-veil">
+
+  <!-- ============================================================
        SECTION 2 — QUEM SOMOS
        ============================================================ -->
   <section class="section" id="quem-somos" aria-labelledby="about-h2">
@@ -271,7 +279,11 @@
 
       </div>
 
-      <!-- Time — quem está por trás do RRlab -->
+      <!--
+        SEÇÃO "TIME" DESATIVADA TEMPORARIAMENTE
+        Ainda contém texto placeholder. Reative removendo este comentário
+        assim que os dados reais da equipe forem preenchidos abaixo.
+
       <div class="team reveal d3">
         <p class="label">Quem faz acontecer</p>
         <h3 class="h3 team__title">Por trás do RRlab.</h3>
@@ -322,6 +334,7 @@
 
         </div>
       </div>
+      -->
 
     </div>
   </section>
@@ -953,6 +966,8 @@
 
     </div>
   </footer>
+
+  </div><!-- /#content-veil -->
 
 
   <!-- ============================================================

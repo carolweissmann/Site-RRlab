@@ -157,18 +157,18 @@
   outline-offset: 3px;
 }
 
-/* Primário — azul sólido */
+/* Primário — terracota sólido */
 .btn-primary {
-  background: var(--brand-blue);
+  background: var(--brand-terra);
   color: var(--text-white);
-  border-color: var(--brand-blue);
+  border-color: var(--brand-terra);
   font-weight: 700;
 }
 .btn-primary:hover {
-  background: var(--brand-blue-dark);
-  border-color: var(--brand-blue-dark);
+  background: var(--brand-terra-dark);
+  border-color: var(--brand-terra-dark);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-blue);
+  box-shadow: var(--shadow-terra);
 }
 
 /* Fantasma — borda sutil */

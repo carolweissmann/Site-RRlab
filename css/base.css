@@ -10,12 +10,13 @@
   --brand-terra:       #9f766a;
   --brand-terra-light: rgba(159, 118, 106, 0.15);
   --brand-terra-glow:  rgba(159, 118, 106, 0.30);
+  --brand-terra-dark:  #775950;
   --brand-gray:        #e5e3e2;
 
   /* ── Backgrounds ────────────────────────────────────────────── */
   --bg-base:     #07090c;
   --bg-surface:  #0d1117;
-  --bg-card:     rgba(255, 255, 255, 0.06);
+  --bg-card:     rgba(255, 255, 255, 0.09);
   --bg-card-hov: rgba(255, 255, 255, 0.10);
   --bg-glass:    rgba(13, 17, 23, 0.75);
 
@@ -30,8 +31,9 @@
   --text-muted:  rgba(242, 244, 246, 0.48);
 
   /* ── Sombras ────────────────────────────────────────────────── */
-  --shadow-card: 0 0 0 1px var(--border), 0 8px 40px rgba(0,0,0,0.45);
-  --shadow-blue: 0 8px 32px var(--brand-blue-glow);
+  --shadow-card:  0 0 0 1px var(--border), 0 8px 40px rgba(0,0,0,0.45);
+  --shadow-blue:  0 8px 32px var(--brand-blue-glow);
+  --shadow-terra: 0 8px 32px var(--brand-terra-glow);
 
   /* ── Bordas arredondadas ────────────────────────────────────── */
   --r-xs:  6px;
@@ -83,6 +85,13 @@ body {
 }
 #iridescence-bg canvas {
   display: block;
+}
+
+/* Escurece o iridescence a partir de "quem-somos" até o fim da página;
+   o hero fica de fora. Fluxo normal (não fixed), então a altura
+   acompanha o conteúdo automaticamente. */
+#content-veil {
+  background: rgba(7, 9, 12, 0.4); /* --bg-base a 40% de opacidade */
 }
 
 a    { color: inherit; text-decoration: none; }
