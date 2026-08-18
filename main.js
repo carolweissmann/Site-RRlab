@@ -19,18 +19,18 @@
    Camada fixa atrás de todo o conteúdo. Engine em js/iridescence.js.
 ================================================================ */
 
-(function initIridescenceBackground() {
-
+(function initNebulaBackground() {
   const bg = document.getElementById('iridescence-bg');
-  if (!bg || typeof createIridescence !== 'function') return;
+  if (!bg || typeof createNebula !== 'function') return;
 
-  createIridescence(bg, {
-    color: [0.1176, 0.4078, 0.5098],
-    speed: 1.0,
-    amplitude: 0.1,
-    mouseReact: false,
+  createNebula(bg, {
+    colorDeep: [0.027, 0.035, 0.047],
+    colorMid:  [0.118, 0.408, 0.510],
+    colorGlow: [0.624, 0.463, 0.416],
+    speed: 0.8,
+    mouseReact: true,
+    stars: true,
   });
-
 })();
 
 
