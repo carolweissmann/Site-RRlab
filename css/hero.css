@@ -15,39 +15,6 @@
   background: transparent;
 }
 
-/* Glow central único — núcleo terracota que esmaece para azul,
-   mais denso/brilhante no meio, como base pro campo de partículas */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 70%;
-  height: 70%;
-  background:
-    radial-gradient(circle, var(--brand-terra-glow) 0%, transparent 40%),
-    radial-gradient(circle, var(--brand-blue-glow) 10%, transparent 65%);
-  filter: blur(110px);
-  pointer-events: none;
-  animation: aurora-drift 36s ease-in-out infinite;
-}
-
-@keyframes aurora-drift {
-  0%, 100%  { transform: translate(-50%, -50%) scale(1); }
-  50%        { transform: translate(-50%, -50%) translate(2%, 1.5%) scale(1.05); }
-}
-
-/* Campo de partículas — canvas 2D nativo, posições geradas uma vez,
-   sem loop de animação. Só a camada inteira se move (parallax do mouse). */
-#hero-particles {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  transition: transform 0.4s ease-out;
-}
-
 .hero__content {
   position: relative;
   z-index: 1;
@@ -56,33 +23,15 @@
   padding-block: 4rem;
 }
 
-/* Eyebrow pill */
+/* Eyebrow — label estático, mesma assinatura visual de .label */
 .hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  background: var(--brand-blue-light);
-  border: 1px solid rgba(30, 104, 130, 0.35);
-  color: #7ab8cc;
-  padding: 0.4rem 1.1rem;
-  border-radius: 100px;
+  display: inline-block;
+  color: var(--brand-terra);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
   margin-bottom: 2rem;
-}
-.hero__eyebrow-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--brand-blue);
-  box-shadow: 0 0 8px var(--brand-blue);
-  animation: pulse-dot 2.2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(0.75); }
 }
 
 /* Título principal */
@@ -136,7 +85,7 @@
 .hero__trust-num {
   font-size: 1.65rem;
   font-weight: 800;
-  color: var(--text-white);
+  color: var(--text-heading);
   letter-spacing: -0.03em;
   line-height: 1;
 }
@@ -149,27 +98,4 @@
   width: 1px;
   height: 36px;
   background: var(--border);
-}
-
-/* Seta de scroll */
-.hero__scroll {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  animation: scroll-bob 2.4s ease-in-out infinite;
-  z-index: 1;
-}
-.hero__scroll-line {
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, var(--brand-blue), transparent);
-}
-@keyframes scroll-bob {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%       { transform: translateX(-50%) translateY(8px); }
 }

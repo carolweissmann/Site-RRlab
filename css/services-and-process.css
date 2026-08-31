@@ -13,55 +13,32 @@
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
   padding: 2.25rem 2rem;
   position: relative;
   overflow: hidden;
-  transition: border-color var(--t), background var(--t),
-              transform var(--t), box-shadow var(--t);
+  transition: border-color var(--t), background var(--t);
 }
 .svc-card:hover {
   border-color: var(--border-hov);
   background: var(--bg-card-hov);
-  transform: translateY(-5px);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px var(--border-hov);
 }
-
-/* Linha inferior animada */
-.svc-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 1.5rem;
-  right: 1.5rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--brand-blue), transparent);
-  opacity: 0;
-  transition: opacity var(--t);
-}
-.svc-card:hover::after { opacity: 1; }
 
 /* Ícone */
 .svc-card__icon {
-  width: 48px;
-  height: 48px;
-  background: var(--brand-blue-light);
-  border: 1px solid rgba(30,104,130,0.28);
-  border-radius: var(--r-sm);
+  width: auto;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
-  transition: box-shadow var(--t);
-}
-.svc-card:hover .svc-card__icon {
-  box-shadow: 0 0 20px var(--brand-blue-glow);
 }
 .svc-card__icon svg {
-  width: 22px;
-  height: 22px;
+  width: 32px;
+  height: 32px;
   stroke: var(--brand-blue);
   fill: none;
-  stroke-width: 1.7;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -78,15 +55,9 @@
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--brand-blue);
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity var(--t), transform var(--t), gap var(--t);
+  transition: gap var(--t);
 }
-.svc-card:hover .svc-card__link {
-  opacity: 1;
-  transform: translateX(0);
-}
-.svc-card:hover .svc-card__link:hover { gap: 0.6rem; }
+.svc-card__link:hover { gap: 0.6rem; }
 
 
 /* ================================================================
@@ -127,7 +98,7 @@
 .how__num {
   width: 58px;
   height: 58px;
-  background: var(--bg-surface);
+  background: var(--bg-base);
   border: 1.5px solid var(--brand-blue);
   border-radius: 50%;
   display: flex;
@@ -141,11 +112,11 @@
   position: relative;
   z-index: 1;
   box-shadow: 0 0 0 6px var(--bg-base);
-  transition: background var(--t), box-shadow var(--t);
+  transition: background var(--t), color var(--t);
 }
 .how__step:hover .how__num {
-  background: var(--brand-blue-light);
-  box-shadow: 0 0 24px var(--brand-blue-glow), 0 0 0 6px var(--bg-base);
+  background: var(--brand-blue);
+  color: var(--bg-base);
 }
 
 .how__step .h3 { font-size: 1rem; margin-bottom: 0.5rem; }

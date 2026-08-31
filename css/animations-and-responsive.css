@@ -29,6 +29,19 @@
 @media (max-width: 1100px) {
   .nav__links, .nav__cta { display: none; }
   .nav__hamburger { display: flex; }
+
+  /* Sem os elementos flutuantes (pill/CTA), a barra precisa de um fundo
+     próprio — senão o conteúdo por trás "vaza" visualmente atrás da logo. */
+  .nav {
+    top: 0;
+    padding-top: env(safe-area-inset-top);
+    background: rgba(250, 248, 245, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav__inner { height: 56px; }
+  .nav__logo img { height: 34px; }
 }
 
 /* Tablets e notebooks compactos */
@@ -65,12 +78,9 @@
 }
 
 @media (max-width: 640px) {
-  .nav { top: 6px; }
   .nav .container { padding-inline: 1rem; }
-  .nav__inner { height: 48px; }
-  .nav__logo img { height: 44px; }
 
-  .hero { min-height: auto; padding-top: 76px; }
+  .hero { min-height: auto; padding-top: calc(76px + env(safe-area-inset-top)); }
   .hero__content { padding-block: 3.5rem 5rem; }
   .hero__eyebrow { font-size: 0.62rem; letter-spacing: 0.11em; }
   .hero__sub { font-size: 1rem; line-height: 1.7; margin-bottom: 2.25rem; }
@@ -78,7 +88,20 @@
   .hero__trust { gap: 1.25rem; padding-top: 2rem; }
   .hero__trust-num { font-size: 1.4rem; }
   .hero__trust-label { font-size: 0.68rem; }
-  .hero__scroll { display: none; }
+
+  .mobile-fixed-cta {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1050;
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -8px 24px rgba(26, 26, 24, 0.10);
+  }
+  .footer { padding-bottom: 5.5rem; }
 
   .audience__grid { grid-template-columns: 1fr; }
   .services__grid { grid-template-columns: 1fr; }
@@ -132,9 +155,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero__scroll,
-  .hero__eyebrow-dot,
-  .hero::before { animation: none; }
-  #hero-particles { transition: none; }
   * { transition-duration: 0.01ms !important; }
 }

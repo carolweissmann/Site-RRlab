@@ -24,7 +24,7 @@
   border-radius: 100px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--text-white);
+  color: var(--text-heading);
   background: var(--bg-card);
   transition: border-color var(--t), background var(--t);
 }
@@ -38,17 +38,15 @@
   height: 5px;
   border-radius: 50%;
   background: var(--brand-blue);
-  box-shadow: 0 0 6px var(--brand-blue);
   flex-shrink: 0;
 }
 
 /* Card de visão */
 .about__card {
   background: var(--bg-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
-  border-radius: var(--r-xl);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
   padding: 2.75rem 2.5rem;
   position: relative;
   overflow: hidden;
@@ -57,22 +55,11 @@
 .about__card:hover {
   border-color: var(--border-hov);
 }
-/* Glow no canto */
-.about__card::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 260px;
-  height: 260px;
-  background: radial-gradient(circle, var(--brand-blue-glow), transparent 70%);
-  pointer-events: none;
-}
 .about__card-tag {
   display: inline-block;
   background: var(--brand-blue-light);
   border: 1px solid rgba(30,104,130,0.3);
-  color: #7ab8cc;
+  color: var(--brand-blue);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -99,34 +86,29 @@
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
   padding: 2rem 1.75rem;
-  transition: border-color var(--t), background var(--t),
-              transform var(--t), box-shadow var(--t);
+  transition: border-color var(--t), background var(--t);
 }
 .team-card:hover {
   border-color: var(--border-hov);
   background: var(--bg-card-hov);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
 }
 
 .team-card__avatar {
   width: 56px;
   height: 56px;
-  border-radius: 50%;
-  background: var(--brand-blue-light);
-  border: 1px solid rgba(30,104,130,0.28);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
 }
 .team-card__avatar svg {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   stroke: var(--brand-blue);
   fill: none;
-  stroke-width: 1.7;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -134,7 +116,7 @@
 .team-card__name {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--text-white);
+  color: var(--text-heading);
   margin-bottom: 0.25rem;
 }
 .team-card__role {
@@ -168,35 +150,30 @@
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
   padding: 2rem 1.75rem;
-  transition: border-color var(--t), background var(--t),
-              transform var(--t), box-shadow var(--t);
+  transition: border-color var(--t), background var(--t);
 }
 .a-card:hover {
   border-color: var(--border-hov);
   background: var(--bg-card-hov);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
 }
 
 /* Ícone */
 .a-card__icon {
-  width: 44px;
-  height: 44px;
-  background: var(--brand-blue-light);
-  border: 1px solid rgba(30,104,130,0.28);
-  border-radius: var(--r-sm);
+  width: auto;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
 }
 .a-card__icon svg {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   stroke: var(--brand-blue);
   fill: none;
-  stroke-width: 1.8;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }

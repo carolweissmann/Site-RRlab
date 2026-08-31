@@ -4,43 +4,33 @@
 :root {
   /* ── Paleta oficial ─────────────────────────────────────────── */
   --brand-blue:        #1e6882;
-  --brand-blue-light:  rgba(30, 104, 130, 0.18);
-  --brand-blue-glow:   rgba(30, 104, 130, 0.30);
-  --brand-blue-dark:   #164f63;
-  --brand-terra:       #9f766a;
-  --brand-terra-light: rgba(159, 118, 106, 0.15);
-  --brand-terra-glow:  rgba(159, 118, 106, 0.30);
-  --brand-terra-dark:  #775950;
-  --brand-gray:        #e5e3e2;
+  --brand-blue-light:  rgba(30, 104, 130, 0.10);
+  --brand-terra:       #8f6054;
+  --brand-terra-dark:  #6f483d;
 
   /* ── Backgrounds ────────────────────────────────────────────── */
-  --bg-base:     #07090c;
-  --bg-surface:  #0d1117;
-  --bg-card:     rgba(255, 255, 255, 0.09);
-  --bg-card-hov: rgba(255, 255, 255, 0.10);
-  --bg-glass:    rgba(13, 17, 23, 0.75);
+  --bg-base:     #faf8f5;
+  --bg-surface:  #f3f0ea;
+  --bg-card:     #ffffff;
+  --bg-card-hov: #f6f3ee;
+  --bg-nav:      #ffffff;
 
   /* ── Bordas ─────────────────────────────────────────────────── */
-  --border:      rgba(255, 255, 255, 0.07);
-  --border-hov:  rgba(30, 104, 130, 0.50);
-  --border-terra:rgba(159, 118, 106, 0.35);
+  --border:      #e6e2d9;
+  --border-hov:  rgba(30, 104, 130, 0.40);
 
   /* ── Texto ──────────────────────────────────────────────────── */
-  --text-white:  #f2f4f6;
-  --text-body:   rgba(242, 244, 246, 0.62);
-  --text-muted:  rgba(242, 244, 246, 0.48);
+  --text-heading: #1a1a18;
+  --text-body:    rgba(26, 26, 24, 0.72);
+  --text-muted:   rgba(26, 26, 24, 0.62);
 
   /* ── Sombras ────────────────────────────────────────────────── */
-  --shadow-card:  0 0 0 1px var(--border), 0 8px 40px rgba(0,0,0,0.45);
-  --shadow-blue:  0 8px 32px var(--brand-blue-glow);
-  --shadow-terra: 0 8px 32px var(--brand-terra-glow);
+  --shadow-card: 0 1px 2px rgba(26, 26, 24, 0.06);
 
   /* ── Bordas arredondadas ────────────────────────────────────── */
-  --r-xs:  6px;
-  --r-sm:  10px;
-  --r-md:  16px;
-  --r-lg:  22px;
-  --r-xl:  32px;
+  --r-xs:  4px;
+  --r-md:  8px;
+  --r-lg:  12px;
 
   /* ── Transição padrão ───────────────────────────────────────── */
   --t: 0.26s cubic-bezier(0.4, 0, 0.2, 1);
@@ -65,33 +55,11 @@ html {
 
 body {
   font-family: 'Manrope', 'Axiforma', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: transparent;
+  background: var(--bg-base);
   color: var(--text-body);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-}
-
-/* ================================================================
-   FUNDO ANIMADO (WebGL — iridescence)
-   Fixo atrás de todo o conteúdo; ver js/iridescence.js
-================================================================ */
-#iridescence-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: var(--bg-base);
-}
-#iridescence-bg canvas {
-  display: block;
-}
-
-/* Escurece o iridescence a partir de "quem-somos" até o fim da página;
-   o hero fica de fora. Fluxo normal (não fixed), então a altura
-   acompanha o conteúdo automaticamente. */
-#content-veil {
-  background: rgba(7, 9, 12, 0.4); /* --bg-base a 40% de opacidade */
 }
 
 a    { color: inherit; text-decoration: none; }
@@ -110,7 +78,7 @@ button { font-family: inherit; }
   font-weight: 700;
   line-height: 1.04;
   letter-spacing: -0.04em;
-  color: var(--text-white);
+  color: var(--text-heading);
 }
 
 /* Títulos de seção */
@@ -119,7 +87,7 @@ button { font-family: inherit; }
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: -0.025em;
-  color: var(--text-white);
+  color: var(--text-heading);
 }
 
 /* Títulos de card */
@@ -127,7 +95,7 @@ button { font-family: inherit; }
   font-size: clamp(1rem, 1.6vw, 1.15rem);
   font-weight: 600;
   line-height: 1.3;
-  color: var(--text-white);
+  color: var(--text-heading);
 }
 
 /* Label / eyebrow */

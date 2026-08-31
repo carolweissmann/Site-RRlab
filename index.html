@@ -19,13 +19,18 @@
   <meta name="robots"      content="index, follow" />
   <link rel="canonical"    href="https://rrlab.com.br/" />
 
+  <!-- ─── FAVICON ───────────────────────────────────────────── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
   <!-- ─── OPEN GRAPH ────────────────────────────────────────── -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://rrlab.com.br/" />
   <meta property="og:title"       content="RRlab — Restless Research Lab" />
   <meta property="og:description" content="Ciência aplicada com rigor, clareza e resultado." />
-  <!-- TODO: descomentar quando assets/og-image.jpg (1200x630px) existir -->
-  <!-- <meta property="og:image"       content="https://rrlab.com.br/assets/og-image.jpg" /> -->
+  <meta property="og:image"       content="https://rrlab.com.br/assets/og-image.jpg" />
   <meta name="twitter:card"       content="summary_large_image" />
 
   <!-- ─── TÍTULO ────────────────────────────────────────────── -->
@@ -63,12 +68,6 @@
 </head>
 
 <body>
-
-  <!-- ============================================================
-       FUNDO ANIMADO (WebGL — iridescence)
-       Fixo, cobre a tela inteira, atrás de todo o resto do conteúdo.
-       ============================================================ -->
-  <div id="iridescence-bg" aria-hidden="true"></div>
 
   <!-- ============================================================
        MOBILE NAV OVERLAY
@@ -115,7 +114,7 @@
         <!-- Logo -->
         <a href="#" class="nav__logo" aria-label="RRlab — ir para o início">
           <img
-            src="logo-white.png"
+            src="image/logo-blue.png"
             alt="RRlab — Restless Research Lab"
             width="140"
             height="40"
@@ -163,13 +162,11 @@
        SECTION 1 — HERO
        ============================================================ -->
   <section class="hero" aria-label="Apresentação do RRlab">
-    <canvas id="hero-particles" aria-hidden="true"></canvas>
     <div class="container">
       <div class="hero__content">
 
-        <!-- Eyebrow pill -->
+        <!-- Eyebrow -->
         <div class="hero__eyebrow reveal">
-          <span class="hero__eyebrow-dot" aria-hidden="true"></span>
           Consultoria Científica de Alto Padrão
         </div>
 
@@ -195,37 +192,25 @@
         <!-- Números de confiança -->
         <div class="hero__trust reveal d4" aria-label="Nossos números">
           <div class="hero__trust-item">
-            <span class="hero__trust-num">15+</span>
+            <span class="hero__trust-num" data-counter="15" data-suffix="+">15+</span>
             <span class="hero__trust-label">anos de experiência</span>
           </div>
           <div class="hero__trust-sep" aria-hidden="true"></div>
           <div class="hero__trust-item">
-            <span class="hero__trust-num">300+</span>
+            <span class="hero__trust-num" data-counter="300" data-suffix="+">300+</span>
             <span class="hero__trust-label">estudos clínicos</span>
           </div>
           <div class="hero__trust-sep" aria-hidden="true"></div>
           <div class="hero__trust-item">
-            <span class="hero__trust-num">6</span>
+            <span class="hero__trust-num" data-counter="6" data-suffix="">6</span>
             <span class="hero__trust-label">áreas de serviço</span>
           </div>
         </div>
 
       </div>
     </div>
-
-    <!-- Seta de scroll -->
-    <div class="hero__scroll" aria-hidden="true">
-      <div class="hero__scroll-line"></div>
-    </div>
   </section>
 
-
-  <!-- ============================================================
-       CONTENT VEIL
-       Escurece o fundo animado a partir daqui até o fim da página
-       (o hero, acima, fica de fora). Ver #content-veil em base.css.
-       ============================================================ -->
-  <div id="content-veil">
 
   <!-- ============================================================
        SECTION 2 — QUEM SOMOS
@@ -883,7 +868,7 @@
         <div>
           <div class="footer__logo" aria-label="RRlab">
             <img
-              src="logo-white.png"
+              src="image/logo-blue.png"
               alt="RRlab — Restless Research Lab"
               width="120"
               height="36"
@@ -963,14 +948,16 @@
     </div>
   </footer>
 
-  </div><!-- /#content-veil -->
-
+  <!-- ============================================================
+       BARRA CTA FIXA (mobile)
+       ============================================================ -->
+  <div class="mobile-fixed-cta">
+    <a href="#contato" class="btn btn-primary">Agendar conversa</a>
+  </div>
 
   <!-- ============================================================
        JAVASCRIPT (no final do body = melhor performance)
        ============================================================ -->
-  <script src="js/iridescence.js"></script>
-  <script src="js/nebula.js"></script>
   <script src="main.js"></script>
 
 </body>
