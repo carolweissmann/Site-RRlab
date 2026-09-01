@@ -322,6 +322,54 @@
 
 
   <!-- ============================================================
+       RESPIRO EDITORIAL — corte visual entre Quem somos e Para quem
+       ============================================================ -->
+  <section class="editorial-break" aria-label="Nossa visão sobre ciência">
+    <div class="container editorial-break__inner">
+
+      <p class="editorial-break__text">
+        Ciência é muito mais do que artigos e protocolos.
+        É uma ferramenta viva de transformação.
+      </p>
+
+      <!-- Ilustração decorativa — rede de pontos conectados, puramente ornamental -->
+      <svg class="editorial-break__constellation" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="#ffffff" stroke-width="1">
+          <line x1="60"  y1="140" x2="160" y2="40"/>
+          <line x1="160" y1="40"  x2="290" y2="70"/>
+          <line x1="290" y1="70"  x2="350" y2="190"/>
+          <line x1="350" y1="190" x2="330" y2="310"/>
+          <line x1="330" y1="310" x2="230" y2="350"/>
+          <line x1="230" y1="350" x2="106" y2="331"/>
+          <line x1="106" y1="331" x2="40"  y2="240"/>
+          <line x1="40"  y1="240" x2="60"  y2="140"/>
+          <line x1="60"  y1="140" x2="170" y2="170"/>
+          <line x1="290" y1="70"  x2="170" y2="170"/>
+          <line x1="170" y1="170" x2="260" y2="230"/>
+          <line x1="260" y1="230" x2="350" y2="190"/>
+          <line x1="260" y1="230" x2="230" y2="350"/>
+          <line x1="40"  y1="240" x2="170" y2="170"/>
+          <line x1="106" y1="331" x2="260" y2="230"/>
+        </g>
+        <g fill="#ffffff">
+          <circle cx="60"  cy="140" r="3.5"/>
+          <circle cx="160" cy="40"  r="3.5"/>
+          <circle cx="290" cy="70"  r="3.5"/>
+          <circle cx="350" cy="190" r="3.5"/>
+          <circle cx="330" cy="310" r="3.5"/>
+          <circle cx="230" cy="350" r="3.5"/>
+          <circle cx="106" cy="331" r="3.5"/>
+          <circle cx="40"  cy="240" r="3.5"/>
+          <circle cx="170" cy="170" r="5"/>
+          <circle cx="260" cy="230" r="5"/>
+        </g>
+      </svg>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
        SECTION 3 — PARA QUEM TRABALHAMOS
        ============================================================ -->
   <section class="section" id="para-quem" aria-labelledby="audience-h2">
@@ -596,44 +644,46 @@
         <p>Um método estruturado, do diagnóstico ao resultado mensurável.</p>
       </div>
 
-      <div class="how__track">
+      <div class="how__viewport">
+        <div class="how__track">
 
-        <div class="how__step reveal d1">
-          <div class="how__num" aria-label="Etapa 1 de 4">1</div>
-          <h3 class="h3">Diagnóstico</h3>
-          <p>
-            Entendemos seu contexto, objetivos e os desafios específicos
-            que precisam ser resolvidos.
-          </p>
+          <div class="how__step reveal d1" tabindex="0" aria-label="Etapa 1 de 4: Diagnóstico">
+            <div class="how__num" aria-hidden="true">1</div>
+            <h3 class="h3">Diagnóstico</h3>
+            <p>
+              Entendemos seu contexto, objetivos e os desafios específicos
+              que precisam ser resolvidos.
+            </p>
+          </div>
+
+          <div class="how__step reveal d2" tabindex="0" aria-label="Etapa 2 de 4: Planejamento">
+            <div class="how__num" aria-hidden="true">2</div>
+            <h3 class="h3">Planejamento</h3>
+            <p>
+              Construímos uma estratégia personalizada com metas claras,
+              indicadores e prazos realistas.
+            </p>
+          </div>
+
+          <div class="how__step reveal d3" tabindex="0" aria-label="Etapa 3 de 4: Execução">
+            <div class="how__num" aria-hidden="true">3</div>
+            <h3 class="h3">Execução</h3>
+            <p>
+              Implementamos as soluções com rigor técnico, transparência
+              e acompanhamento próximo em cada etapa.
+            </p>
+          </div>
+
+          <div class="how__step reveal d4" tabindex="0" aria-label="Etapa 4 de 4: Acompanhamento">
+            <div class="how__num" aria-hidden="true">4</div>
+            <h3 class="h3">Acompanhamento</h3>
+            <p>
+              Monitoramos resultados, ajustamos o curso e garantimos que
+              cada entrega cumpra o que foi prometido.
+            </p>
+          </div>
+
         </div>
-
-        <div class="how__step reveal d2">
-          <div class="how__num" aria-label="Etapa 2 de 4">2</div>
-          <h3 class="h3">Planejamento</h3>
-          <p>
-            Construímos uma estratégia personalizada com metas claras,
-            indicadores e prazos realistas.
-          </p>
-        </div>
-
-        <div class="how__step reveal d3">
-          <div class="how__num" aria-label="Etapa 3 de 4">3</div>
-          <h3 class="h3">Execução</h3>
-          <p>
-            Implementamos as soluções com rigor técnico, transparência
-            e acompanhamento próximo em cada etapa.
-          </p>
-        </div>
-
-        <div class="how__step reveal d4">
-          <div class="how__num" aria-label="Etapa 4 de 4">4</div>
-          <h3 class="h3">Acompanhamento</h3>
-          <p>
-            Monitoramos resultados, ajustamos o curso e garantimos que
-            cada entrega cumpra o que foi prometido.
-          </p>
-        </div>
-
       </div>
     </div>
   </section>
@@ -656,11 +706,11 @@
         </p>
       </div>
 
-      <div class="diffs__grid">
+      <div class="diffs__stats">
 
-        <div class="diff-card reveal d1">
+        <div class="diffs__stat reveal d1">
           <!-- data-counter anima o número ao entrar na viewport -->
-          <div class="diff-card__num" data-counter="15" data-suffix="+">15+</div>
+          <div class="diffs__stat-num" data-counter="15" data-suffix="+">15+</div>
           <h3 class="h3">Anos de experiência</h3>
           <p>
             Mais de quinze anos atuando em pesquisa clínica, indústria
@@ -668,8 +718,8 @@
           </p>
         </div>
 
-        <div class="diff-card reveal d2">
-          <div class="diff-card__num" data-counter="300" data-suffix="+">300+</div>
+        <div class="diffs__stat reveal d2">
+          <div class="diffs__stat-num" data-counter="300" data-suffix="+">300+</div>
           <h3 class="h3">Estudos clínicos</h3>
           <p>
             Envolvimento direto em mais de trezentos estudos — da fase I
@@ -677,60 +727,72 @@
           </p>
         </div>
 
-        <div class="diff-card reveal d3">
-          <div class="diff-card__icon" aria-hidden="true">
+      </div>
+
+      <div class="diffs__list">
+
+        <div class="diffs__item reveal d3">
+          <div class="diffs__item-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M22 12h-4l-3 8-4-16-3 8H2"/>
             </svg>
           </div>
-          <h3 class="h3">Experiência clínica real</h3>
-          <p>
-            Nossa equipe veio da prática. Conhecemos cada protocolo,
-            cada documento e cada comitê de ética.
-          </p>
+          <div class="diffs__item-body">
+            <h3 class="h3">Experiência clínica real</h3>
+            <p>
+              Nossa equipe veio da prática. Conhecemos cada protocolo,
+              cada documento e cada comitê de ética.
+            </p>
+          </div>
         </div>
 
-        <div class="diff-card reveal d1">
-          <div class="diff-card__icon" aria-hidden="true">
+        <div class="diffs__item reveal d1">
+          <div class="diffs__item-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <rect x="8" y="3" width="8" height="18" rx="4" transform="rotate(45 12 12)"/>
               <line x1="6" y1="12" x2="18" y2="12" transform="rotate(45 12 12)"/>
             </svg>
           </div>
-          <h3 class="h3">Indústria farmacêutica</h3>
-          <p>
-            Profundo entendimento das exigências de sponsors globais
-            e das principais agências reguladoras.
-          </p>
+          <div class="diffs__item-body">
+            <h3 class="h3">Indústria farmacêutica</h3>
+            <p>
+              Profundo entendimento das exigências de sponsors globais
+              e das principais agências reguladoras.
+            </p>
+          </div>
         </div>
 
-        <div class="diff-card reveal d2">
-          <div class="diff-card__icon" aria-hidden="true">
+        <div class="diffs__item reveal d2">
+          <div class="diffs__item-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M22 10L12 5 2 10l10 5 10-5z"/>
               <path d="M6 12.5V17a6 6 0 0 0 12 0v-4.5"/>
             </svg>
           </div>
-          <h3 class="h3">Experiência acadêmica</h3>
-          <p>
-            Formação sólida e produção científica que sustentam cada
-            recomendação que fazemos.
-          </p>
+          <div class="diffs__item-body">
+            <h3 class="h3">Experiência acadêmica</h3>
+            <p>
+              Formação sólida e produção científica que sustentam cada
+              recomendação que fazemos.
+            </p>
+          </div>
         </div>
 
-        <div class="diff-card reveal d3">
-          <div class="diff-card__icon" aria-hidden="true">
+        <div class="diffs__item reveal d3">
+          <div class="diffs__item-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="8.5"/>
               <circle cx="12" cy="12" r="4.5"/>
               <circle cx="12" cy="12" r="1"/>
             </svg>
           </div>
-          <h3 class="h3">Abordagem personalizada</h3>
-          <p>
-            Sem soluções genéricas. Cada cliente recebe atenção dedicada,
-            do primeiro contato à entrega final.
-          </p>
+          <div class="diffs__item-body">
+            <h3 class="h3">Abordagem personalizada</h3>
+            <p>
+              Sem soluções genéricas. Cada cliente recebe atenção dedicada,
+              do primeiro contato à entrega final.
+            </p>
+          </div>
         </div>
 
       </div>

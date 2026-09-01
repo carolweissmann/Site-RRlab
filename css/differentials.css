@@ -1,38 +1,22 @@
    /* 13. DIFERENCIAIS (Section 6)
 ================================================================ */
 
-.diffs__grid {
+/* Faixa de estatísticas — full-width, duas colunas, sem chrome de card */
+.diffs__stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: 1fr 1fr;
   margin-top: 3.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
 }
 
-.diff-card {
-  border-radius: var(--r-lg);
-  transition: border-color var(--t), background var(--t);
+.diffs__stat:nth-child(2) {
+  border-left: 1px solid var(--border);
+  padding-left: 3rem;
 }
 
-/* Cards com ícone mantêm o cartão com borda fina + sombra única */
-.diff-card:has(.diff-card__icon) {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-card);
-  padding: 2rem 1.75rem;
-}
-.diff-card:has(.diff-card__icon):hover {
-  border-color: var(--border-hov);
-  background: var(--bg-card-hov);
-}
-
-/* Cards com número grande viram "estatística nua" — sem chrome de card,
-   quebra a grade uniforme de 6 caixas iguais. */
-.diff-card:has(.diff-card__num) {
-  padding-block: 0.5rem;
-}
-
-/* Número de destaque (cards com contador animado) */
-.diff-card__num {
+/* Número de destaque (contador animado) */
+.diffs__stat-num {
   font-size: 3.25rem;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -41,16 +25,38 @@
   color: var(--brand-blue);
 }
 
-/* Ícone de destaque — mesmo padrão visual de .svc-card__icon / .a-card__icon */
-.diff-card__icon {
-  width: auto;
-  height: auto;
+.diffs__stat .h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+.diffs__stat p   { font-size: 0.85rem; line-height: 1.68; }
+
+/* Lista de diferenciais — linhas full-width, sem card/sombra */
+.diffs__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.diffs__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  padding: 1.75rem 0.5rem;
+  border-top: 1px solid var(--border);
+  transition: background var(--t);
+}
+
+.diffs__item:hover {
+  background: var(--bg-surface);
+}
+
+/* Ícone — sem fundo/círculo atrás */
+.diffs__item-icon {
+  flex-shrink: 0;
+  width: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  padding-top: 0.15rem;
 }
-.diff-card__icon svg {
+.diffs__item-icon svg {
   width: 30px;
   height: 30px;
   stroke: var(--brand-blue);
@@ -60,8 +66,8 @@
   stroke-linejoin: round;
 }
 
-.diff-card .h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
-.diff-card p   { font-size: 0.85rem; line-height: 1.68; }
+.diffs__item-body .h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+.diffs__item-body p   { font-size: 0.85rem; line-height: 1.68; }
 
 
 /* ================================================================

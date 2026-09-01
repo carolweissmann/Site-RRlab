@@ -1,6 +1,11 @@
    /* 9. SOBRE (Section 2)
 ================================================================ */
 
+#quem-somos {
+  background: var(--bg-surface);
+  padding-block: clamp(6rem, 11vw, 10rem);
+}
+
 .about__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -131,6 +136,57 @@
 .team-card__bio {
   font-size: 0.86rem;
   line-height: 1.72;
+}
+
+
+/* ================================================================
+   9.5 RESPIRO EDITORIAL — corte visual entre Quem somos e Para quem
+================================================================ */
+
+.editorial-break {
+  background: var(--brand-blue);
+  padding-block: clamp(4.5rem, 9vw, 7rem);
+  overflow: hidden;
+}
+
+.editorial-break__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.editorial-break__text {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  max-width: 620px;
+  text-align: left;
+  font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+  font-weight: 600;
+  line-height: 1.42;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+/* Rede de pontos conectados — puramente decorativa, sem preenchimento
+   sólido nem brilho, só um traçado fino girando bem devagar. */
+.editorial-break__constellation {
+  flex: 0 0 auto;
+  width: clamp(220px, 22vw, 320px);
+  height: clamp(220px, 22vw, 320px);
+  opacity: 0.2;
+  animation: editorial-break-spin 60s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes editorial-break-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-break__constellation { animation: none; }
 }
 
 

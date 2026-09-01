@@ -56,12 +56,6 @@
   .about__grid { gap: clamp(2.5rem, 6vw, 4rem); }
   .audience__grid { grid-template-columns: repeat(2, 1fr); }
   .services__grid { grid-template-columns: repeat(2, 1fr); }
-  .diffs__grid    { grid-template-columns: repeat(2, 1fr); }
-
-  .how__track { grid-template-columns: repeat(2, 1fr); row-gap: 3rem; }
-  /* Em 2 colunas, só a etapa do meio da fileira (2ª) teria um conector
-     "fantasma" pulando pra fileira de baixo — some só esse. */
-  .how__step:nth-child(2)::after { display: none; }
 
   .why__inner { grid-template-columns: 1fr; }
   .why__left  { border-right: none; border-bottom: 1px solid var(--border); }
@@ -75,6 +69,19 @@
   .about__grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .about__card { padding: clamp(1.75rem, 6vw, 2.5rem); }
   .why__left, .why__right { padding: clamp(2rem, 7vw, 3rem); }
+
+  /* Ilustração vira pano de fundo atrás do texto, em vez de coluna ao lado */
+  .editorial-break__inner { display: block; }
+  .editorial-break__text { max-width: 100%; text-align: center; }
+  .editorial-break__constellation {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: min(80vw, 380px);
+    height: min(80vw, 380px);
+    opacity: 0.12;
+    z-index: 0;
+  }
 }
 
 @media (max-width: 640px) {
@@ -105,36 +112,25 @@
 
   .audience__grid { grid-template-columns: 1fr; }
   .services__grid { grid-template-columns: 1fr; }
-  .diffs__grid    { grid-template-columns: 1fr; }
   .why__stats     { grid-template-columns: 1fr 1fr; }
+
+  .diffs__stats { grid-template-columns: 1fr; gap: 2rem; }
+  .diffs__stat:nth-child(2) {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+  }
+  .diffs__item { gap: 1.25rem; }
   .footer__inner  { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; text-align: center; }
 
-  /* Timeline vira uma coluna única com um conector vertical contínuo,
-     em vez de simplesmente esconder a linha. */
-  .how__track {
-    grid-template-columns: 1fr;
-    row-gap: 2.25rem;
-  }
-  .how__step {
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
-    gap: 1.25rem;
-    padding-inline: 0;
-  }
-  .how__step::after { display: none; }
-  .how__num { margin-bottom: 0; }
-  .how__track::before {
-    content: '';
-    position: absolute;
-    top: 29px;
-    bottom: 29px;
-    left: 29px;
-    width: 1px;
-    background: linear-gradient(180deg, var(--brand-blue), rgba(30,104,130,0.10));
-    z-index: 0;
-  }
+  /* Em mobile o swipe nativo já indica que há mais conteúdo — sem fade
+     nem setas entre cards, e o conector unicode não cabe no gap menor. */
+  .how__viewport::before,
+  .how__viewport::after { display: none; }
+  .how__track { gap: 1rem; }
+  .how__step:not(:last-child)::after { display: none; }
 }
 
 @media (max-width: 480px) {
