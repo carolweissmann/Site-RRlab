@@ -68,77 +68,27 @@
    12. COMO FUNCIONA (Section 5)
 ================================================================ */
 
-/* Viewport — controla o fade de borda; o scroll de fato acontece no track */
-.how__viewport {
-  position: relative;
+.how__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   margin-top: 4rem;
 }
 
-.how__viewport::before,
-.how__viewport::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 56px;
-  z-index: 2;
-  pointer-events: none;
-}
-.how__viewport::before {
-  left: 0;
-  background: linear-gradient(90deg, var(--bg-base), rgba(250, 248, 245, 0));
-}
-.how__viewport::after {
-  right: 0;
-  background: linear-gradient(270deg, var(--bg-base), rgba(250, 248, 245, 0));
-}
-
-/* Feed horizontal com scroll-snap */
-.how__track {
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 0.4rem 0.1rem 1rem;
-}
-.how__track::-webkit-scrollbar { display: none; }
-
 .how__step {
-  scroll-snap-align: start;
-  flex: 0 0 auto;
-  width: 280px;
-  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  padding: 2rem 1.75rem;
-  position: relative;
+  border-radius: var(--r-lg);
+  padding: 2.25rem 2rem;
   transition: border-color var(--t), background var(--t);
 }
 .how__step:hover {
   border-color: var(--border-hov);
   background: var(--bg-card-hov);
-}
-.how__step:focus-visible {
-  outline: 2px solid var(--brand-blue);
-  outline-offset: 3px;
-}
-
-/* Conector entre cards — traço + seta no espaço do gap */
-.how__step:not(:last-child)::after {
-  content: '\2192';
-  position: absolute;
-  top: 50%;
-  right: -2.1rem;
-  transform: translateY(-50%);
-  font-size: 1.1rem;
-  line-height: 1;
-  color: var(--brand-blue);
-  opacity: 0.4;
-  z-index: 3;
-  pointer-events: none;
 }
 
 .how__num {
@@ -164,5 +114,23 @@
 
 .how__step .h3 { font-size: 1rem; margin-bottom: 0.5rem; }
 .how__step p   { font-size: 0.86rem; line-height: 1.72; }
+
+/* Ícone de traço fino — mesmo padrão visual de .diff-card__icon */
+.how__step-icon {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 1.5rem;
+}
+.how__step-icon svg {
+  width: 34px;
+  height: 34px;
+  stroke: var(--brand-blue);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 

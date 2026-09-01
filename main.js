@@ -187,14 +187,3 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 counterEls.forEach(el => counterObserver.observe(el));
-
-
-/* ================================================================
-   8. FEED "COMO FUNCIONA" — garante scroll ao focar via teclado
-================================================================ */
-
-document.querySelectorAll('.how__step').forEach(step => {
-  step.addEventListener('focus', () => {
-    step.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-  });
-});

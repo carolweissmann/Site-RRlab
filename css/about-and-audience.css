@@ -170,23 +170,12 @@
   color: #ffffff;
 }
 
-/* Rede de pontos conectados — puramente decorativa, sem preenchimento
-   sólido nem brilho, só um traçado fino girando bem devagar. */
-.editorial-break__constellation {
+/* Partículas em canvas 2D — puramente decorativas, movimento senoidal
+   leve controlado via JS (ver main.js). */
+.editorial-break__particles {
   flex: 0 0 auto;
   width: clamp(220px, 22vw, 320px);
   height: clamp(220px, 22vw, 320px);
-  opacity: 0.2;
-  animation: editorial-break-spin 60s linear infinite;
-  transform-origin: 50% 50%;
-}
-
-@keyframes editorial-break-spin {
-  to { transform: rotate(360deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .editorial-break__constellation { animation: none; }
 }
 
 

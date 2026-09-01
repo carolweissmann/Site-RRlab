@@ -56,6 +56,7 @@
   .about__grid { gap: clamp(2.5rem, 6vw, 4rem); }
   .audience__grid { grid-template-columns: repeat(2, 1fr); }
   .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .how__grid      { grid-template-columns: repeat(2, 1fr); }
 
   .why__inner { grid-template-columns: 1fr; }
   .why__left  { border-right: none; border-bottom: 1px solid var(--border); }
@@ -73,13 +74,13 @@
   /* Ilustração vira pano de fundo atrás do texto, em vez de coluna ao lado */
   .editorial-break__inner { display: block; }
   .editorial-break__text { max-width: 100%; text-align: center; }
-  .editorial-break__constellation {
+  .editorial-break__particles {
     position: absolute;
     inset: 0;
     margin: auto;
     width: min(80vw, 380px);
     height: min(80vw, 380px);
-    opacity: 0.12;
+    opacity: 0.5;
     z-index: 0;
   }
 }
@@ -125,12 +126,7 @@
   .footer__inner  { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; text-align: center; }
 
-  /* Em mobile o swipe nativo já indica que há mais conteúdo — sem fade
-     nem setas entre cards, e o conector unicode não cabe no gap menor. */
-  .how__viewport::before,
-  .how__viewport::after { display: none; }
-  .how__track { gap: 1rem; }
-  .how__step:not(:last-child)::after { display: none; }
+  .how__grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {

@@ -332,38 +332,8 @@
         É uma ferramenta viva de transformação.
       </p>
 
-      <!-- Ilustração decorativa — rede de pontos conectados, puramente ornamental -->
-      <svg class="editorial-break__constellation" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
-        <g fill="none" stroke="#ffffff" stroke-width="1">
-          <line x1="60"  y1="140" x2="160" y2="40"/>
-          <line x1="160" y1="40"  x2="290" y2="70"/>
-          <line x1="290" y1="70"  x2="350" y2="190"/>
-          <line x1="350" y1="190" x2="330" y2="310"/>
-          <line x1="330" y1="310" x2="230" y2="350"/>
-          <line x1="230" y1="350" x2="106" y2="331"/>
-          <line x1="106" y1="331" x2="40"  y2="240"/>
-          <line x1="40"  y1="240" x2="60"  y2="140"/>
-          <line x1="60"  y1="140" x2="170" y2="170"/>
-          <line x1="290" y1="70"  x2="170" y2="170"/>
-          <line x1="170" y1="170" x2="260" y2="230"/>
-          <line x1="260" y1="230" x2="350" y2="190"/>
-          <line x1="260" y1="230" x2="230" y2="350"/>
-          <line x1="40"  y1="240" x2="170" y2="170"/>
-          <line x1="106" y1="331" x2="260" y2="230"/>
-        </g>
-        <g fill="#ffffff">
-          <circle cx="60"  cy="140" r="3.5"/>
-          <circle cx="160" cy="40"  r="3.5"/>
-          <circle cx="290" cy="70"  r="3.5"/>
-          <circle cx="350" cy="190" r="3.5"/>
-          <circle cx="330" cy="310" r="3.5"/>
-          <circle cx="230" cy="350" r="3.5"/>
-          <circle cx="106" cy="331" r="3.5"/>
-          <circle cx="40"  cy="240" r="3.5"/>
-          <circle cx="170" cy="170" r="5"/>
-          <circle cx="260" cy="230" r="5"/>
-        </g>
-      </svg>
+      <!-- Ilustração decorativa — partículas em canvas 2D, puramente ornamental -->
+      <canvas class="editorial-break__particles" aria-hidden="true"></canvas>
 
     </div>
   </section>
@@ -644,10 +614,10 @@
         <p>Um método estruturado, do diagnóstico ao resultado mensurável.</p>
       </div>
 
-      <div class="how__viewport">
-        <div class="how__track">
+      <div class="how__grid">
 
-          <div class="how__step reveal d1" tabindex="0" aria-label="Etapa 1 de 4: Diagnóstico">
+        <div class="how__step reveal d1">
+          <div>
             <div class="how__num" aria-hidden="true">1</div>
             <h3 class="h3">Diagnóstico</h3>
             <p>
@@ -655,8 +625,16 @@
               que precisam ser resolvidos.
             </p>
           </div>
+          <div class="how__step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="10" cy="10" r="6.5"/>
+              <line x1="19" y1="19" x2="14.7" y2="14.7"/>
+            </svg>
+          </div>
+        </div>
 
-          <div class="how__step reveal d2" tabindex="0" aria-label="Etapa 2 de 4: Planejamento">
+        <div class="how__step reveal d2">
+          <div>
             <div class="how__num" aria-hidden="true">2</div>
             <h3 class="h3">Planejamento</h3>
             <p>
@@ -664,8 +642,16 @@
               indicadores e prazos realistas.
             </p>
           </div>
+          <div class="how__step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9.5"/>
+              <polygon points="15.74 8.26 13.62 13.62 8.26 15.74 10.38 10.38 15.74 8.26"/>
+            </svg>
+          </div>
+        </div>
 
-          <div class="how__step reveal d3" tabindex="0" aria-label="Etapa 3 de 4: Execução">
+        <div class="how__step reveal d3">
+          <div>
             <div class="how__num" aria-hidden="true">3</div>
             <h3 class="h3">Execução</h3>
             <p>
@@ -673,8 +659,18 @@
               e acompanhamento próximo em cada etapa.
             </p>
           </div>
+          <div class="how__step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="5" y="4" width="14" height="17" rx="2"/>
+              <path d="M9 3.5h6a1 1 0 0 1 1 1V6H8V4.5a1 1 0 0 1 1-1z"/>
+              <path d="M8.5 12.5l1.8 1.8L14 10.5"/>
+              <line x1="8.5" y1="16.5" x2="15.5" y2="16.5"/>
+            </svg>
+          </div>
+        </div>
 
-          <div class="how__step reveal d4" tabindex="0" aria-label="Etapa 4 de 4: Acompanhamento">
+        <div class="how__step reveal d4">
+          <div>
             <div class="how__num" aria-hidden="true">4</div>
             <h3 class="h3">Acompanhamento</h3>
             <p>
@@ -682,8 +678,14 @@
               cada entrega cumpra o que foi prometido.
             </p>
           </div>
-
+          <div class="how__step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <polyline points="2 17 8.5 10.5 13.5 15.5 22 7"/>
+              <polyline points="16 7 22 7 22 13"/>
+            </svg>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -1021,6 +1023,7 @@
        JAVASCRIPT (no final do body = melhor performance)
        ============================================================ -->
   <script src="main.js"></script>
+  <script src="js/particles.js"></script>
 
 </body>
 </html>
