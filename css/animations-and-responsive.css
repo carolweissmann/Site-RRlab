@@ -53,35 +53,38 @@
 
   /* Os grids de três colunas passam para duas; o "Quem somos" mantém
      duas colunas para aproveitar melhor tablets em paisagem. */
-  .about__grid { gap: clamp(2.5rem, 6vw, 4rem); }
-  .audience__grid { grid-template-columns: repeat(2, 1fr); }
-  .services__grid { grid-template-columns: repeat(2, 1fr); }
-  .how__grid      { grid-template-columns: repeat(2, 1fr); }
+  .about__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2.5rem, 6vw, 4rem); }
+  .audience__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .how__grid      { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-  .why__inner { grid-template-columns: 1fr; }
-  .why__left  { border-right: none; border-bottom: 1px solid var(--border); }
+  .why__intro { grid-template-columns: 1fr; gap: 1.25rem; }
+  .why__content { grid-template-columns: minmax(0, 1fr); }
 
-  .footer__inner { grid-template-columns: 1fr 1fr; }
+  .footer__inner { grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); }
 }
 
 /* Tablets em retrato e celulares grandes */
 @media (max-width: 700px) {
-  .section { padding-block: clamp(4rem, 12vw, 5.5rem); }
-  .about__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .section { padding-block: clamp(3.5rem, 10vw, 4.5rem); }
+  .about__grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
   .about__card { padding: clamp(1.75rem, 6vw, 2.5rem); }
-  .why__left, .why__right { padding: clamp(2rem, 7vw, 3rem); }
-
-  /* Ilustração vira pano de fundo atrás do texto, em vez de coluna ao lado */
-  .editorial-break__inner { display: block; }
-  .editorial-break__text { max-width: 100%; text-align: center; }
-  .editorial-break__particles {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: min(80vw, 380px);
-    height: min(80vw, 380px);
-    opacity: 0.5;
-    z-index: 0;
+  .why__intro { padding: clamp(2rem, 7vw, 3rem); }
+  .why__content { padding: clamp(1.75rem, 6vw, 2.5rem); }
+  /* Mantém a frase centralizada e evita excesso de altura no celular */
+  .editorial-break {
+    min-height: clamp(15rem, 60vw, 19rem);
+  }
+  .editorial-break__inner {
+    display: flex;
+    min-height: inherit;
+  }
+  .editorial-break__text {
+    max-width: 24ch;
+    padding-block: 2rem;
+    font-size: clamp(1.65rem, 6.8vw, 2.2rem);
+    line-height: 1.18;
+    text-align: center;
   }
 }
 
@@ -109,14 +112,14 @@
     border-top: 1px solid var(--border);
     box-shadow: 0 -8px 24px rgba(26, 26, 24, 0.10);
   }
-  .footer { padding-bottom: 5.5rem; }
+  .footer { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
 
-  .audience__grid { grid-template-columns: 1fr; }
-  .services__grid { grid-template-columns: 1fr; }
-  .why__stats     { grid-template-columns: 1fr 1fr; }
+  .audience__grid { grid-template-columns: minmax(0, 1fr); }
+  .services__grid { grid-template-columns: minmax(0, 1fr); }
+  .why__stats     { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .diffs__stats { grid-template-columns: 1fr; gap: 2rem; }
-  .diffs__stat:nth-child(2) {
+  .diffs__stat:nth-child(n + 2) {
     border-left: none;
     padding-left: 0;
     border-top: 1px solid var(--border);
@@ -126,19 +129,28 @@
   .footer__inner  { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; text-align: center; }
 
-  .how__grid { grid-template-columns: 1fr; }
+  .how__grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 480px) {
-  .display { font-size: clamp(2.45rem, 12vw, 3.25rem); }
+  .display { font-size: clamp(2.2rem, 10.5vw, 3rem); }
   .hero__eyebrow { max-width: 100%; text-align: left; }
   .hero__actions { flex-direction: column; align-items: stretch; }
   .hero__actions .btn { justify-content: center; }
-  .hero__trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .hero__trust { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
   .hero__trust-label { line-height: 1.35; }
   .about__pills { gap: 0.45rem; }
   .pill { padding: 0.4rem 0.75rem; font-size: 0.74rem; }
-  .why__stats { grid-template-columns: 1fr; }
+  .why__stats { gap: 0.65rem; }
+  .why__stat { padding: 1rem 0.85rem; }
+  .why__stat-num { font-size: clamp(1.8rem, 9vw, 2.4rem); }
+}
+
+@media (max-width: 360px) {
+  .container { padding-inline: 1rem; }
+  .why__stats { grid-template-columns: minmax(0, 1fr); }
+  .hero__trust { gap: 0.5rem; }
+  .hero__trust-label { font-size: 0.62rem; }
 }
 
 /* ================================================================

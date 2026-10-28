@@ -29,9 +29,29 @@
   color: var(--brand-blue);
   border-color: #ffffff;
 }
+.cta-sec__box .btn {
+  max-width: 100%;
+  gap: 0.85rem;
+  padding: 0.55rem 0.65rem 0.55rem 1.4rem;
+  text-align: center;
+}
+.cta-sec__box .btn span {
+  flex: 1 1 auto;
+}
+.cta-sec__box .btn svg {
+  box-sizing: content-box;
+  flex: 0 0 auto;
+  padding: 0.55rem;
+  border-radius: 50%;
+  background: var(--brand-blue);
+  color: #ffffff;
+  transition: transform var(--t);
+}
+.cta-sec__box .btn:hover svg {
+  transform: translateX(2px);
+}
 .cta-sec__box .btn-primary:hover {
   background: rgba(255, 255, 255, 0.88);
   border-color: rgba(255, 255, 255, 0.88);
 }
-
 

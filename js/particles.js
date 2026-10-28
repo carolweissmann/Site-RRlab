@@ -1,8 +1,7 @@
 /* ================================================================
    PARTÍCULAS — .editorial-break__particles
-   Canvas 2D leve, sem WebGL, sem lib externa. Movimento senoidal
-   simples (sem física real, sem ruído procedural), pausado fora da
-   viewport e substituído por um frame estático em prefers-reduced-motion.
+   Canvas 2D leve, sem WebGL ou dependências externas. A rede se move
+   suavemente, pausa fora da viewport e fica estática com reduced motion.
 ================================================================ */
 
 (function () {
@@ -12,7 +11,6 @@
   const ctx = canvas.getContext('2d');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const PARTICLE_COUNT = 40;
   const MAX_DPR = 1.5;
 
   let width = 0;
@@ -26,25 +24,49 @@
   }
 
   function createParticles() {
-    particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+    const count = Math.round(Math.min(78, Math.max(34, (width * height) / 11000)));
+    particles = Array.from({ length: count }, () => ({
       baseX: rand(0, width),
       baseY: rand(0, height),
-      amplitude: rand(8, 26),
+      amplitude: rand(12, 42),
       speed: rand(0.15, 0.4),
       phase: rand(0, Math.PI * 2),
-      size: rand(1, 2.8),
+      size: rand(1, 2.4),
     }));
   }
 
   function paint(getPos) {
     ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
-    particles.forEach((p) => {
-      const { x, y } = getPos(p);
+    const positions = particles.map((particle) => getPos(particle));
+    const connectionDistance = Math.min(190, Math.max(130, width * 0.15));
+
+    ctx.lineWidth = 0.8;
+    for (let i = 0; i < positions.length; i += 1) {
+      for (let j = i + 1; j < positions.length; j += 1) {
+        const dx = positions[i].x - positions[j].x;
+        const dy = positions[i].y - positions[j].y;
+        const distance = Math.hypot(dx, dy);
+        if (distance < connectionDistance) {
+          const opacity = (1 - distance / connectionDistance) * 0.58;
+          ctx.strokeStyle = `rgba(185, 139, 125, ${opacity})`;
+          ctx.beginPath();
+          ctx.moveTo(positions[i].x, positions[i].y);
+          ctx.lineTo(positions[j].x, positions[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    ctx.fillStyle = '#c49a8c';
+    ctx.shadowColor = 'rgba(196, 154, 140, 0.8)';
+    ctx.shadowBlur = 9;
+    particles.forEach((particle, index) => {
+      const { x, y } = positions[index];
       ctx.beginPath();
-      ctx.arc(x, y, p.size, 0, Math.PI * 2);
+      ctx.arc(x, y, particle.size, 0, Math.PI * 2);
       ctx.fill();
     });
+    ctx.shadowBlur = 0;
   }
 
   function drawStatic() {
