@@ -24,30 +24,30 @@
   }
 
   function createParticles() {
-    const count = Math.round(Math.min(78, Math.max(34, (width * height) / 11000)));
+    const count = Math.round(Math.min(110, Math.max(55, (width * height) / 6500)));
     particles = Array.from({ length: count }, () => ({
       baseX: rand(0, width),
       baseY: rand(0, height),
-      amplitude: rand(12, 42),
+      amplitude: rand(8, 24),
       speed: rand(0.15, 0.4),
       phase: rand(0, Math.PI * 2),
-      size: rand(1, 2.4),
+      size: rand(0.8, 1.6),
     }));
   }
 
   function paint(getPos) {
     ctx.clearRect(0, 0, width, height);
     const positions = particles.map((particle) => getPos(particle));
-    const connectionDistance = Math.min(190, Math.max(130, width * 0.15));
+    const connectionDistance = Math.min(150, Math.max(110, width * 0.12));
 
-    ctx.lineWidth = 0.8;
+    ctx.lineWidth = 0.6;
     for (let i = 0; i < positions.length; i += 1) {
       for (let j = i + 1; j < positions.length; j += 1) {
         const dx = positions[i].x - positions[j].x;
         const dy = positions[i].y - positions[j].y;
         const distance = Math.hypot(dx, dy);
         if (distance < connectionDistance) {
-          const opacity = (1 - distance / connectionDistance) * 0.58;
+          const opacity = (1 - distance / connectionDistance) * 0.2;
           ctx.strokeStyle = `rgba(185, 139, 125, ${opacity})`;
           ctx.beginPath();
           ctx.moveTo(positions[i].x, positions[i].y);
@@ -57,9 +57,9 @@
       }
     }
 
-    ctx.fillStyle = '#c49a8c';
-    ctx.shadowColor = 'rgba(196, 154, 140, 0.8)';
-    ctx.shadowBlur = 9;
+    ctx.fillStyle = 'rgba(196, 154, 140, 0.55)';
+    ctx.shadowColor = 'rgba(196, 154, 140, 0.35)';
+    ctx.shadowBlur = 4;
     particles.forEach((particle, index) => {
       const { x, y } = positions[index];
       ctx.beginPath();
